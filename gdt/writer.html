@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+ 
+  <script src="jquery-1.8.1.min.js"></script>
+  </head>
+  <body>
+	<div id="dom"></div>
+	<ol id="defs">
+		
+	</ol>
+
+	<script>
+		/******************
+		  variables
+		******************/
+		var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']; // for each letter
+		var objEntry = ''; // the dictionary entry formatted as a javascript object
+		
+		window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem; // get the right name for the filesystem
+		
+		function letters(i){
+			// base url
+			url = "http://www.oqlf.gouv.qc.ca/ressources/bibliotheque/dictionnaires/Internet/Index/"+alpha[i]+"_anglais.html";
+			
+			//get content for that letter
+			$.getJSON("http://query.yahooapis.com/v1/public/yql?"+
+			"q=select%20*%20from%20html%20where%20url%3D%22"+
+			url+
+			"%22%20and%20charset%3D%27iso-8859-1%27&format=xml'&callback=?",
+			function(data){
+				$li = $(data.results[0]).find('ol').children();
+				$('#defs').append($li);
+				if (i < 26) {
+					letters(++i);
+				} else {
+					// finished the letters; execute next step
+					dictionnaire($('ol li a'), 0);
+				}
+			});
+		}
+		letters(0);
+		
+		
+      
+		
+		function dictionnaire($linkList, i) {
+      	url = 'http://www.oqlf.gouv.qc.ca/ressources/bibliotheque/dictionnaires/Internet/Index/' + $($linkList[i]).attr('href');
+      	$.getJSON("http://query.yahooapis.com/v1/public/yql?"+
+               	"q=select%20*%20from%20html%20where%20url%3D%22"+
+						encodeURIComponent(url)+
+						"%22%20and%20charset%3D%27iso-8859-1%27&format=xml'&callback=?",
+					function(data){
+						if (data.results[0]) { // if entry is valid
+							$embed = $(data.results[0]);
+							
+							// english word
+							var anglais = $($linkList[i]).text();
+							
+							// french word and definition, plus formatting
+							var last = $embed.find('tr:contains("Français")').length - 1;
+							var fran = $.trim($($embed.find('tr:contains("Français")')[last]).next().children('.texte1').html());
+							fran = fran.replace(/\>[\n ]+\</g, "><");
+							fran = fran.replace(/\<p+\>/g, " ");
+							fran = fran.replace(/\<\/p+\>/g, "");
+							var definition = $.trim($($embed.find('tr:contains("Français")')[last]).next().next().text()).replace(/\n/g, "<br>");
+							alert(definition);
+							// add synonym(s)
+							last = $($embed.find('tr:contains("Synonyme(s) :")')).length - 1;
+							if (last > 2) {
+								var syn = ', ' + $.trim($( $embed.find('tr:contains("Synonyme(s) :")')[last] ).next().children('.texte1').html()).replace(/\>[\n ]+\</g, "><");
+								syn = syn.replace(/\<p+\>/g, " ");
+								syn = syn.replace(/\<\/p+\>/g, "");
+								fran += syn;
+							}
+							
+							// create object entries.
+							if ( objEntry === '') objEntry += '\t"' + anglais + '": "' + fran + ' ' + definition + '"'; 
+							else objEntry += ',\n\t"' + anglais + '": "' + fran + ' ' + definition + '"';
+							dictionnaire($linkList, ++i);
+						} else {
+							window.requestFileSystem(window.TEMPORARY, 5*1024*1024, onInitFs);
+						}
+      			} //end json success function
+      	);
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      var fs = null;
+      var i=1;
+      var doink;
+      function onInitFs(fs, obj) {
+      	var length = $('ol').children().length;
+      	
+      	fs.root.getFile('gdt.json', {create: true}, function(fileEntry){
+      		fileEntry.createWriter(function(fileWriter){
+      			fileWriter.onwriteend = function(e) {
+      				append(fs, 'gdt.json');		
+      			};
+      			var blob = new Blob(['{\n'], {type: 'text/plain'});
+      			fileWriter.write(blob);
+      		});
+      	});
+      }
+     
+      function append(fs, filename) {     	
+      	
+      	fs.root.getFile(filename, {create: false}, function(appendEntry){
+      		appendEntry.createWriter(function(fileWriter){
+      			
+      			fileWriter.onwriteend = function(e) {
+						fs.root.getFile(filename, {create: false}, function(finishEntry){
+							finishEntry.createWriter(function(fileWriter){
+								fileWriter.onwriteend = function(e) {
+									console.log("append done");
+								}
+								fileWriter.seek(fileWriter.length);
+								alert('done');
+								var ending = new Blob(['\n}'], {type: 'text/plain'});
+								fileWriter.write(ending);
+							}); // end finishEntry.createWriter
+						}); // end fs.root.getFile     				
+      			} // end fileWriter.onwriteend for very end
+      			
+      			fileWriter.seek(fileWriter.length);
+					var middle = new Blob([objEntry], {type: 'text/plain'});
+					//alert(middle);
+					//doink = bleh;
+					fileWriter.write(middle);
+      		});
+      	});
+      }
+      
+      
+    </script>
+
+  </body>
+</html>​
