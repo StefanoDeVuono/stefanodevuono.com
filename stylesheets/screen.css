@@ -146,7 +146,6 @@ section {
   width: 100%;
   height: 27.5px;
   z-index: 40;
-  border: 1px solid green;
 }
 @media (min-width: 480px) {
   /* line 72, ../sass/screen.sass */
@@ -155,7 +154,7 @@ section {
   }
 }
 
-/* line 83, ../sass/screen.sass */
+/* line 82, ../sass/screen.sass */
 #nav {
   position: fixed;
   top: 0;
@@ -165,7 +164,7 @@ section {
   z-index: 20;
 }
 
-/* line 91, ../sass/screen.sass */
+/* line 90, ../sass/screen.sass */
 nav {
   position: relative;
   *zoom: 1;
@@ -185,46 +184,46 @@ nav:after {
   clear: both;
 }
 @media (min-width: 700px) {
-  /* line 91, ../sass/screen.sass */
+  /* line 90, ../sass/screen.sass */
   nav {
     height: 41.25px;
   }
 }
-/* line 98, ../sass/screen.sass */
+/* line 97, ../sass/screen.sass */
 nav header {
   font-family: "OstrichSansBold", Arial, sans-serif;
   font-size: 2.72727em;
   line-height: 0.45833em;
 }
-/* line 101, ../sass/screen.sass */
+/* line 100, ../sass/screen.sass */
 nav header h1 {
   display: inline;
 }
-/* line 103, ../sass/screen.sass */
+/* line 102, ../sass/screen.sass */
 nav header h1:after {
   content: "...";
 }
 @media (min-width: 480px) {
-  /* line 98, ../sass/screen.sass */
+  /* line 97, ../sass/screen.sass */
   nav header {
     width: 49.15254%;
     float: left;
     margin-right: 1.69492%;
     display: inline;
   }
-  /* line 107, ../sass/screen.sass */
+  /* line 106, ../sass/screen.sass */
   nav header h1:after {
     content: none;
   }
 }
 @media (min-width: 700px) {
-  /* line 98, ../sass/screen.sass */
+  /* line 97, ../sass/screen.sass */
   nav header {
     font-size: 4.36364em;
     line-height: 1.14583em;
   }
 }
-/* line 111, ../sass/screen.sass */
+/* line 110, ../sass/screen.sass */
 nav a {
   z-index: 20;
   width: 66.10169%;
@@ -241,7 +240,7 @@ nav a {
   display: none;
 }
 @media (min-width: 480px) {
-  /* line 111, ../sass/screen.sass */
+  /* line 110, ../sass/screen.sass */
   nav a {
     position: static;
     font-family: "Lato", sans-serif;
@@ -260,25 +259,25 @@ nav a {
   }
 }
 @media (min-width: 700px) {
-  /* line 111, ../sass/screen.sass */
+  /* line 110, ../sass/screen.sass */
   nav a {
     margin-top: 13.75px;
   }
 }
-/* line 129, ../sass/screen.sass */
+/* line 128, ../sass/screen.sass */
 nav a:nth-child(3) {
   top: 1.5em;
 }
-/* line 131, ../sass/screen.sass */
+/* line 130, ../sass/screen.sass */
 nav a:nth-child(4) {
   top: 3em;
 }
-/* line 133, ../sass/screen.sass */
+/* line 132, ../sass/screen.sass */
 nav a:nth-child(5) {
   top: 4.5em;
   margin-right: 0;
 }
-/* line 136, ../sass/screen.sass */
+/* line 135, ../sass/screen.sass */
 nav #the-rest {
   border-bottom: 1px solid black;
   position: absolute;
@@ -289,45 +288,47 @@ nav #the-rest {
   z-index: -20;
 }
 @media (min-width: 480px) {
-  /* line 136, ../sass/screen.sass */
+  /* line 135, ../sass/screen.sass */
   nav #the-rest {
     left: 190px;
   }
 }
 @media (min-width: 700px) {
-  /* line 136, ../sass/screen.sass */
+  /* line 135, ../sass/screen.sass */
   nav #the-rest {
     left: 300px;
   }
 }
 
-/* line 149, ../sass/screen.sass */
+/* line 148, ../sass/screen.sass */
 #bio {
   font-size: 1em;
   line-height: 1.875em;
   position: relative;
   min-height: 173px;
+  margin-top: 1.25em;
 }
 @media (min-width: 480px) {
-  /* line 149, ../sass/screen.sass */
+  /* line 148, ../sass/screen.sass */
   #bio {
+    margin-top: 0em;
     font-size: 1.27273em;
     line-height: 1.96429em;
   }
-  /* line 155, ../sass/screen.sass */
+  /* line 156, ../sass/screen.sass */
   #bio #floater {
     float: left;
     height: 50%;
     width: 100%;
     margin-bottom: -50%;
   }
-  /* line 160, ../sass/screen.sass */
+  /* line 161, ../sass/screen.sass */
   #bio #wrapper {
     clear: both;
     height: 19.6429em;
   }
 }
-/* line 163, ../sass/screen.sass */
+/* line 164, ../sass/screen.sass */
 #bio a {
   position: relative;
   vertical-align: middle;
@@ -339,42 +340,42 @@ nav #the-rest {
   overflow: hidden;
 }
 @media (min-width: 480px) {
-  /* line 163, ../sass/screen.sass */
+  /* line 164, ../sass/screen.sass */
   #bio a {
     height: 15.75em;
   }
 }
-/* line 171, ../sass/screen.sass */
+/* line 172, ../sass/screen.sass */
 #bio a img {
   width: 100%;
 }
 @media (min-width: 480px) {
-  /* line 171, ../sass/screen.sass */
+  /* line 172, ../sass/screen.sass */
   #bio a img {
     position: absolute;
     bottom: 0;
   }
 }
 @media (min-width: 700px) {
-  /* line 171, ../sass/screen.sass */
+  /* line 172, ../sass/screen.sass */
   #bio a img {
     position: relative;
   }
 }
 
-/* line 182, ../sass/screen.sass */
+/* line 183, ../sass/screen.sass */
 #portfolio {
   font-size: 0.90909em;
   line-height: 1.375em;
   min-height: 126px;
 }
 @media (max-width: 480px) and (orientation: landscape) {
-  /* line 182, ../sass/screen.sass */
+  /* line 183, ../sass/screen.sass */
   #portfolio {
     height: auto;
   }
 }
-/* line 189, ../sass/screen.sass */
+/* line 190, ../sass/screen.sass */
 #portfolio .linkOut {
   margin-top: 1.25em;
   width: 32.20339%;
@@ -397,16 +398,16 @@ nav #the-rest {
 #portfolio .linkOut:nth-child(3n + 3) {
   margin-left: 67.79661%;
 }
-/* line 193, ../sass/screen.sass */
+/* line 194, ../sass/screen.sass */
 #portfolio .linkOut img {
   width: 100%;
 }
-/* line 195, ../sass/screen.sass */
+/* line 196, ../sass/screen.sass */
 #portfolio .linkOut:first-child {
   margin-left: 0;
 }
 
-/* line 199, ../sass/screen.sass */
+/* line 200, ../sass/screen.sass */
 #cv h2 {
   margin-top: 1.25em;
   text-align: center;
@@ -414,17 +415,17 @@ nav #the-rest {
   font-size: 1.09091em;
   line-height: 2.29167em;
 }
-/* line 204, ../sass/screen.sass */
+/* line 205, ../sass/screen.sass */
 #cv p {
   padding-left: 2em;
   text-indent: -2em;
   margin-bottom: 0.625em;
 }
-/* line 208, ../sass/screen.sass */
+/* line 209, ../sass/screen.sass */
 #cv p b {
   font-weight: bold;
 }
-/* line 210, ../sass/screen.sass */
+/* line 211, ../sass/screen.sass */
 #cv a {
   text-decoration: none;
 }
