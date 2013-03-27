@@ -363,19 +363,19 @@ nav #the-rest {
   }
 }
 
-/* line 183, ../sass/screen.sass */
+/* line 182, ../sass/screen.sass */
 #portfolio {
   font-size: 0.90909em;
   line-height: 1.375em;
   min-height: 126px;
 }
 @media (max-width: 480px) and (orientation: landscape) {
-  /* line 183, ../sass/screen.sass */
+  /* line 182, ../sass/screen.sass */
   #portfolio {
     height: auto;
   }
 }
-/* line 190, ../sass/screen.sass */
+/* line 189, ../sass/screen.sass */
 #portfolio .linkOut {
   margin-top: 1.25em;
   width: 32.20339%;
@@ -398,16 +398,22 @@ nav #the-rest {
 #portfolio .linkOut:nth-child(3n + 3) {
   margin-left: 67.79661%;
 }
-/* line 194, ../sass/screen.sass */
+/* line 193, ../sass/screen.sass */
 #portfolio .linkOut img {
   width: 100%;
 }
-/* line 196, ../sass/screen.sass */
+/* line 195, ../sass/screen.sass */
 #portfolio .linkOut:first-child {
   margin-left: 0;
 }
 
-/* line 200, ../sass/screen.sass */
+@media (min-width: 700px) {
+  /* line 198, ../sass/screen.sass */
+  #cv {
+    padding-bottom: 0;
+  }
+}
+/* line 201, ../sass/screen.sass */
 #cv h2 {
   margin-top: 1.25em;
   text-align: center;
@@ -415,19 +421,47 @@ nav #the-rest {
   font-size: 1.09091em;
   line-height: 2.29167em;
 }
-/* line 205, ../sass/screen.sass */
+@media (min-width: 480px) {
+  /* line 201, ../sass/screen.sass */
+  #cv h2 {
+    text-align: left;
+  }
+}
+@media (min-width: 700px) {
+  /* line 201, ../sass/screen.sass */
+  #cv h2 {
+    font-size: 1.27273em;
+    line-height: 1.96429em;
+  }
+}
+/* line 210, ../sass/screen.sass */
 #cv p {
   padding-left: 2em;
   text-indent: -2em;
   margin-bottom: 0.625em;
 }
-/* line 209, ../sass/screen.sass */
+@media (min-width: 480px) {
+  /* line 210, ../sass/screen.sass */
+  #cv p {
+    padding-left: 4em;
+    text-indent: -2em;
+  }
+}
+@media (min-width: 700px) {
+  /* line 210, ../sass/screen.sass */
+  #cv p {
+    font-size: 1.09091em;
+    line-height: 1.14583em;
+  }
+}
+/* line 219, ../sass/screen.sass */
 #cv p b {
   font-weight: bold;
 }
-/* line 211, ../sass/screen.sass */
+/* line 221, ../sass/screen.sass */
 #cv a {
   text-decoration: none;
+  text-align: center;
 }
 /* line 4, ../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/links/_hover-link.scss */
 #cv a:hover {
