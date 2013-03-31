@@ -1,24 +1,24 @@
 /*
 Syntax error: File to import not found or unreadable: susy.
               Load paths:
-                /Users/fondevuono-powell/Sites/portfolio
-                /Users/fondevuono-powell/Sites/portfolio
-        on line 4 of /Users/fondevuono-powell/Sites/portfolio/sass/_base.sass
-        from line 4 of /Users/fondevuono-powell/Sites/portfolio/sass/screen.sass
+                /Users/fondevuono-powell/Sites/portfolio/sass
+                /Users/fondevuono-powell/Sites/portfolio/sass
+        on line 4 of ./_base.sass
+        from line 4 of ./screen.sass
 
 1: // ---------------------------------------------------------------------------
 2: // Imports
 3: 
 4: @import base
-5: 
-6: /* -------------------------------------------------------------------------
-7: /* Layout
-8: 
-9: .container
+5: @import "susy"
+6: @import "compass/reset/utilities"
+7: @import "compass/typography/vertical_rhythm"
+8: @import "compass/typography/links"
+9: @import "compass/layout/stretching"
 
 Backtrace:
-/Users/fondevuono-powell/Sites/portfolio/sass/_base.sass:4
-/Users/fondevuono-powell/Sites/portfolio/sass/screen.sass:4
+./_base.sass:4
+./screen.sass:4
 /Library/Ruby/Gems/1.8/gems/sass-3.2.3/bin/../lib/sass/../sass/tree/import_node.rb:67:in `import'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.3/bin/../lib/sass/../sass/tree/import_node.rb:28:in `imported_file'
 /Library/Ruby/Gems/1.8/gems/sass-3.2.3/bin/../lib/sass/../sass/tree/import_node.rb:37:in `css_import?'
@@ -77,4 +77,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: susy.\A               Load paths:\A                 /Users/fondevuono-powell/Sites/portfolio\A                 /Users/fondevuono-powell/Sites/portfolio\A         on line 4 of /Users/fondevuono-powell/Sites/portfolio/sass/_base.sass\A         from line 4 of /Users/fondevuono-powell/Sites/portfolio/sass/screen.sass\A \A 1: // ---------------------------------------------------------------------------\A 2: // Imports\A 3: \A 4: @import base\A 5: \A 6: /* -------------------------------------------------------------------------\A 7: /* Layout\A 8: \A 9: .container"; }
+  content: "Syntax error: File to import not found or unreadable: susy.\A               Load paths:\A                 /Users/fondevuono-powell/Sites/portfolio/sass\A                 /Users/fondevuono-powell/Sites/portfolio/sass\A         on line 4 of ./_base.sass\A         from line 4 of ./screen.sass\A \A 1: // ---------------------------------------------------------------------------\A 2: // Imports\A 3: \A 4: @import base\A 5: @import \"susy\"\A 6: @import \"compass/reset/utilities\"\A 7: @import \"compass/typography/vertical_rhythm\"\A 8: @import \"compass/typography/links\"\A 9: @import \"compass/layout/stretching\""; }
