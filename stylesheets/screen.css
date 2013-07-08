@@ -291,7 +291,7 @@ nav #the-rest {
   border-bottom: 1px solid black;
   position: absolute;
   right: 0;
-  left: 210px;
+  left: 220px;
   top: 0;
   bottom: 0;
   z-index: -20;
@@ -299,13 +299,13 @@ nav #the-rest {
 @media (min-width: 480px) {
   /* line 142, ../sass/screen.sass */
   nav #the-rest {
-    left: 190px;
+    left: 205px;
   }
 }
 @media (min-width: 700px) {
   /* line 142, ../sass/screen.sass */
   nav #the-rest {
-    left: 300px;
+    left: 320px;
   }
 }
 
