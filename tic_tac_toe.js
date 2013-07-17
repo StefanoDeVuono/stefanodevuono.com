@@ -1,4 +1,4 @@
-Game = (function()	{
+var Game = (function()	{
 	var TicTacToe = function(){
 		var that = this;
 		that.grid = [[],[],[]];
@@ -8,16 +8,9 @@ Game = (function()	{
 				for (var i = 0; i < 3; i++) {
 					subArray[i] = '_';
 				}
-			})
+			});
 		})();
 
-	};
-
-	TicTacToe.prototype.show = function(){
-		console.log("Board")
-		console.log(this.grid[0]);
-		console.log(this.grid[1]);
-		console.log(this.grid[2]);
 	};
 
 	TicTacToe.prototype.place = function(symbol, coordinates){
@@ -26,7 +19,7 @@ Game = (function()	{
 			return (that.grid[x][y] === '_');
 		};
 
-		if (!validMove()) {
+		if ( !validMove() ) {
 			console.log('invalid move!');
 		} else {
 			that.grid[x][y] = symbol;
@@ -128,19 +121,29 @@ Game = (function()	{
 
 $(document).ready(function(){
 	var game = Game();
+	var $blueImg = $('<img class="team" src="blue.svg">');
+	var $redImg = $('<img class="team" src="red.svg">');
+	var $victoryImg = $('<img class="victory" src="victory.svg">');
 
-	function pietRender(){
-		$('div').each(function(i, div) {
-			var x = Math.ceil(Math.random()*100);
-			$(div).css('height', x + 200);
+	function pietRender(el, measurement){
+		var totalDimension = 0, d, lastClass;
+		$(el).each(function(i, div) {
+			d = Math.floor(Math.random()*16) + 25;
+			totalDimension += d;
+			if ( $(div).attr('class') ) {
+				lastClass = div = '.' + $(div).attr('class');
+			}
+			$(div).css(measurement, d + '%');
 		});
-		var col1width = Math.floor(Math.random()*16) + 25;
-		var col2width = Math.floor(Math.random()*16) + 25;
-		var col3width = 99 - col1width - col2width;
-		$('.col1').css('width', col1width + '%');
-		$('.col2').css('width', col2width + '%');
-		$('.col3').css('width', col3width + '%');
+		d += 100 - totalDimension;
+		if (lastClass)
+			$(lastClass).css(measurement, d + '%');
+		else
+			$(el).last().css(measurement, d + '%');
+		
 	}
+
+	//$(window).on('resize', pietRender);
 
 
 
@@ -156,16 +159,23 @@ $(document).ready(function(){
 		}
 	}
 
-	function renderVictory(rowIndex, columnIndex){
+	function renderVictory(rowIndex, columnIndex, team){
+		var $teamImg = (team === 'o') ? $redImg : $blueImg;
 		var $row = $($('div')[rowIndex]);
 		var $tile = $($row.children()[columnIndex]);
 		$tile.addClass("yellow");
+		$tile.append($victoryImg.add($teamImg));
+		$teamImg.fadeIn(400, function(){
+			$victoryImg.fadeIn();
+		})
 		$('span').off('click');
 	}
 
 
 	function play(){
-		pietRender();
+		pietRender('div', 'height');
+		
+		pietRender('div:first span', 'width');
 		var xPlays = true;
 		var rowIndex, columnIndex;
 		$('span').on('click', function(){
@@ -174,7 +184,8 @@ $(document).ready(function(){
 			if (xPlays) game.grid[rowIndex][columnIndex] = 'x';
 			if (!xPlays) game.grid[rowIndex][columnIndex] = 'o';
 			render(rowIndex, columnIndex, xPlays);
-			if (game.winner()) renderVictory(rowIndex, columnIndex);
+			winner = game.winner();
+			if (winner) renderVictory(rowIndex, columnIndex, winner);
 			xPlays = !xPlays;
 		});
 	}
