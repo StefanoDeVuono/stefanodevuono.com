@@ -181,6 +181,7 @@ $(document).ready(function(){
 		$('span').on('click', function(){
 			columnIndex = $(this).index();
 			rowIndex = $(this).parent().index();
+			if (game.grid[rowIndex][columnIndex] !== '_') return;
 			if (xPlays) game.grid[rowIndex][columnIndex] = 'x';
 			if (!xPlays) game.grid[rowIndex][columnIndex] = 'o';
 			render(rowIndex, columnIndex, xPlays);
