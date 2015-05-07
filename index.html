@@ -1,95 +1,133 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="google-site-verification" content="2QQF5lOSAb4_YmS3ZdBPtKxWYDzHNi4xuCrgniiF3Tw" />
-<link rel="stylesheet" href="./stylesheets/screen.css">
-<link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="./stylesheets/font.css" type="text/css" charset="utf-8">
-<script src="jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Stefano De Vuono</title>
 
-<title>Stefano De Vuono</title>
+  <script src="/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+  <link rel="import" href="/elements/fonts.html">
+
+  <link rel="import" href="/bower_components/app-router/app-router.html">
+  <link rel="import" href="/bower_components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="/bower_components/paper-menu-button/paper-menu-button.html">
+  <link rel="import" href="/bower_components/core-animated-pages/core-animated-pages.html">
+
+  <link rel="import" href="/elements/bio-element.html">
+  <link rel="import" href="/elements/portfolio-element.html">
+  <link rel="import" href="/elements/cv-element.html">
+  <link rel="import" href="/elements/links-element.html">
+
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0;
+      background-color: ghostwhite;
+      color: #191919;
+      font-family: 'Fira', sans-serif;
+    }
+
+    core-header-panel {
+      height: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    core-toolbar {
+      background: #191919;
+      color: ghostwhite;
+    }
+    #tabs {
+      width: 100%;
+      margin: 0;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      text-transform: uppercase;
+    }
+    #tabs paper-tab {
+      cursor: pointer;
+    }
+
+    #tabs::shadow div#selectionBar {
+      background: plum;
+    }
+    #tabs paper-tab::shadow #ink {
+      color: plum;
+    }
+    #tabs div#selectionBar {
+      background: plum;
+    }
+    #tabs paper-tab #ink {
+      color: plum;
+    }
+    core-animated-pages * {
+      padding: 0.5em;
+      margin-bottom: -1em;
+    }
+    bio-element core-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    padding: 0;
+    margin: 0 15px;
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+    float: left;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+  }
+    footer {
+      color: blue;
+      height: 1em;
+      bottom: 0;
+    }
+  </style>
 </head>
-<body>
-	<div id="touch"></div>
-	<div id="nav">
-		<nav>
-			
-			<header><h1>Stefano De Vuono</h1></header>
-			<a href="#bio">Bio</a>
-			<a href="#portfolio">Portfolio</a>
-			<a href="#cv">CV</a>
-			<div id="the-rest"></div>
-		</nav>
-	</div>
-	<div id="page">
-		
-		
-		<section id="bio">
-			<div id="floater"></div>
-			<div id="wrapper">
-				<a href="mailto:fon@jackfresno.ca">
-					<img src="stefano.png">
-				</a>
-				<aside>I like a challenge. I learned Quark, Photoshop and Illustrator <em>in French while learning French</em>. I wrote my first university essay on emacs on my new Linux install.  I left school to found a small dance company and realizing that no one would do it for me, I taught myself CSS and HTML. I coded everything by hand. I eventually learned enough JavaScript  and AJAX to implement Stuart Rackhams's DOM Popup Kit, based on prototype. I even sent him a few corrections. Over the past few years I've gotten more and more into PHP and jQuery to create custom WordPress templates all while learning HTML5 and CSS3. I care about design, use and code. I'm that guy: the stylish nerd who loves learning and trying new things.</aside>
-			</div>
-		</section>
-		<section id="portfolio">
-			<a class="linkOut" href="http://tommasobikes.com">
-				<img src="tommaso.png">
-				<aside>Tommaso - custom coded WordPress template: PHP, HTML, CSS, JS, JQuery</aside>
-			</a>
-			<a class="linkOut" href="http://bamfbikes.com">
-				<img src="bamf.png">
-				<aside>BAMF - another custom coded WordPress template: PHP, HTML, CSS, JS, JQuery</aside>
-			</a>
-			<a class="linkOut" href="http://stefanodevuono.github.com/gdt">
-				<img src="gdt.png">
-				<aside>Le grand dictionnaire - beta dictionary of French-language Internet terms with Twitter Bootstrap to create responsive design; created using custom HTML5/jQuery linkscraper</aside>
-			</a>
-			<a class="linkOut" href="http://jackfresno.ca/goldpeace">
-				<img src="goldpeace.png">
-				<aside>Gold in Peace - starting to use HTML5 and CSS3 while using PHP to randomize backgrounds</aside>
-			</a>
-			<a class="linkOut" href="http://jackfresno.ca/blackbg/">
-				<img src="jackfre.png">
-				<aside>Jack Fresno - try dragging those divs around; also, note that the content comes in dynamically through AJAX calls</aside>
-			</a>
-			<a class="linkOut" href="http://stefanodevuono.com/tic_tac_toe.html">
-				<img src="tic_tac_toe.png">
-				<aside>Piet's Tic Tac Toe - A JavaScript Tic Tac Toe game inspired by a famous Dutch artist</aside>
-			</a>
-			<a class="linkOut" href="http://nuagedeson.herokuapp.com/">
-				<img src="nuagedeson.png">
-				<aside>Nuage de son - A Backbone.js based app for sharing sound files with a Ruby API, making use of AWS to store songs and a custom script to create PNG files from mp3 files (via LAME and PHP).</aside>
-			</a>
-		</section>
-		<section id="cv">
-			<h2>Key accomplishments</h2>
-			<p>Full stack development with <b>Ruby on Rails</b>, <b>PostgreSQL</b> and <b>Backbone.js</b>,
-			<p>5 years experience with <b>JavaScript</b> including <b>script.aculo.us</b>, <b>prototype</b>, <b>jQuery</b></p>
-			<p>4 years experience with web design including hand-coded cross-browser compliant HTML/CSS websites, <b>Twitter Bootstrap</b>, and preprocessed <b>HTML5/CSS3</b> responsive websites using <b>Sass</b> with media queries.</p>
-			<p>1+ year developing front-end with <b>PHP/MySQL</b> creating secure, escaped PHP and SQL queries primarily in a front-end environment.</p>
-			<p>Custom built <b>WordPress</b> templates from hand.</p>
-			<p>5+ years experience with Photoshop, Illustrator, GIMP and Inkscape in a professional environment.</p>
-			<p>Version control software (<b>git</b>) for project management.</p>
-			<p>Fluent in <b>English</b> and <b>French</b>. Conversant in <b>Italian</b>.</p>
-			<h2>Relevant Experience</h2>
-			<p>Web developer, self-employed — 2011 - 2013</p>
-			<p>Webmaster/manager, jack fresno — 2006-2009</p>
-			<p>Layout editor/webmaster, le délit français — 1999-2002</p>
-			<h2>Education</h2>
-			<p>Coursework at  McGill University in Montreal, QC.</p>
-			<p>Italian literature, mathematics, computer science and economics.</p>
-			<h2>Other Skills</h2>
-			<p>MacOS (installation, maintenance), Linux (installation, maintenance, bash, SSH, Apache, a whole bunch of distros), Computer Hardware, Networking (Juniper and Cisco), Writing, Editing.</p>
-			<h2>References available on request.</h2>
-			<h2><a href="mailto:io@stefanodevuono.com">Contact me.</a></h2>
-		</section>
-		<footer>
-		</footer>
-	</div>
+<body unresolved>
+
+  <core-header-panel>
+    <core-toolbar layout horizontal>
+        <paper-tabs id="tabs" selected="bio" link flex>
+            <paper-tab>
+              <a href="#/" horizontal center-center layout>Stefano</a>
+            </paper-tab>
+              <paper-tab>
+                <a href="#/portfolio" horizontal center-center layout>Portfolio</a>
+              </paper-tab>
+            <paper-tab>
+              <a href="#/cv" horizontal center-center layout>CV</a>
+            </paper-tab>
+            <paper-tab>
+              <a href="#/links" horizontal center-center layout>Links</a>
+            </paper-tab>
+        </paper-tabs>
+    </core-toolbar>
+<!--    <core-animated-pages selected="bio">-->
+    <app-router>
+      <app-route path="/" import="/elements/bio-element.html"></app-route>
+      <app-route path="/portfolio" import="/elements/portfolio-element.html"></app-route>
+      <app-route path="/cv" import="/elements/cv-element.html"></app-route>
+      <app-route path="/links" import="/elements/link-element.html"></app-route>
+    </app-router>
+
+<!--
+      <bio-element name="bio"></bio-element>
+      <portfolio-element name="portfolio"></portfolio-element>
+      <cv-element name="cv"></cv-element>
+      <links-element name="links"></links-element>
+-->
+<!--    </core-animated-pages>-->
+  </core-header-panel>
+
 </body>
-<script src="script.js"></script>
+<script>
+  var tabs = document.querySelector('paper-tabs');
+  var pages = document.querySelector('core-animated-pages');
+
+  tabs.addEventListener('core-select',function(){
+    pages.selected = tabs.selected;
+  });
+</script>
 </html>
