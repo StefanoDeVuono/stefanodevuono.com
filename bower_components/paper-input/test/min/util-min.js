@@ -1,0 +1,1 @@
+function activeElement(){return window.ShadowDOMPolyfill?wrap(document.activeElement):document.activeElement}function assertNodeHasFocus(e){assert.strictEqual(activeElement(),e)}function ensureFocus(e,t){fake.downOnNode(e),fake.upOnNode(e),waitFor(function(){assertNodeHasFocus(e)},t)}
