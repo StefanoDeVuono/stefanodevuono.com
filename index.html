@@ -25,16 +25,16 @@
   <core-header-panel>
     <core-toolbar layout horizontal>
         <paper-tabs id="tabs" link flex>
-            <paper-tab name="bio">
+            <paper-tab name="#/">
               <a href="#/" horizontal center-center layout>Stefano</a>
             </paper-tab>
-              <paper-tab name="portfolio">
+              <paper-tab name="#/portfolio">
                 <a href="#/portfolio" horizontal center-center layout>Portfolio</a>
               </paper-tab>
-            <paper-tab name="cv">
+            <paper-tab name="#/cv">
               <a href="#/cv" horizontal center-center layout>CV</a>
             </paper-tab>
-            <paper-tab name="links">
+            <paper-tab name="#/links">
               <a href="#/links" horizontal center-center layout>Links</a>
             </paper-tab>
         </paper-tabs>
@@ -47,9 +47,9 @@
     </app-router>
   </core-header-panel>
 <script>
-  var router = document.querySelector('app-router');
-  var page = router.activeRoute.attributes.page.value;
-  document.querySelector('paper-tabs').selected = page;
+  var hash = window.location.hash
+  hash = "" ? "#/" : hash;
+  document.querySelector('paper-tabs').selected = hash;
 </script>
 </body>
 </html>
