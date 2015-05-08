@@ -17,83 +17,14 @@
   <link rel="import" href="/elements/portfolio-element.html">
   <link rel="import" href="/elements/cv-element.html">
   <link rel="import" href="/elements/links-element.html">
+  <link rel="stylesheet" href="screen.css" type="text/css">
 
-  <style>
-    html,body {
-      height: 100%;
-      margin: 0;
-      background-color: ghostwhite;
-      color: #191919;
-      font-family: 'Fira', sans-serif;
-    }
-
-    core-header-panel {
-      height: 100%;
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    core-toolbar {
-      background: #191919;
-      color: ghostwhite;
-    }
-    #tabs {
-      width: 100%;
-      margin: 0;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      text-transform: uppercase;
-    }
-    #tabs paper-tab {
-      cursor: pointer;
-    }
-    #tabs paper-tab a {
-      color: white;
-      text-decoration: none;
-    }
-
-    #tabs::shadow div#selectionBar {
-      background: plum;
-    }
-    #tabs paper-tab::shadow #ink {
-      color: plum;
-    }
-    #tabs div#selectionBar {
-      background: plum;
-    }
-    #tabs paper-tab #ink {
-      color: plum;
-    }
-    core-animated-pages * {
-      padding: 0.5em;
-      margin-bottom: -1em;
-    }
-    bio-element core-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 75px;
-    padding: 0;
-    margin: 0 15px;
-    -webkit-border-radius: 75px;
-    -moz-border-radius: 75px;
-    float: left;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
-    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 1);
-    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 1);
-  }
-    footer {
-      color: blue;
-      height: 1em;
-      bottom: 0;
-    }
-  </style>
 </head>
 <body unresolved>
 
   <core-header-panel>
     <core-toolbar layout horizontal>
-        <paper-tabs id="tabs" selected="bio" link flex>
+        <paper-tabs id="tabs" link flex>
             <paper-tab name="bio">
               <a href="#/" horizontal center-center layout>Stefano</a>
             </paper-tab>
@@ -109,12 +40,16 @@
         </paper-tabs>
     </core-toolbar>
     <app-router>
-      <app-route path="/" import="/elements/bio-element.html"></app-route>
-      <app-route path="/portfolio" import="/elements/portfolio-element.html"></app-route>
-      <app-route path="/cv" import="/elements/cv-element.html"></app-route>
-      <app-route path="/links" import="/elements/links-element.html"></app-route>
+      <app-route path="/" page="bio" import="/elements/bio-element.html"></app-route>
+      <app-route path="/portfolio" page="portfolio" import="/elements/portfolio-element.html"></app-route>
+      <app-route path="/cv" page="cv" import="/elements/cv-element.html"></app-route>
+      <app-route path="/links" page="links" import="/elements/links-element.html"></app-route>
     </app-router>
   </core-header-panel>
-
+<script>
+  var router = document.querySelector('app-router');
+  var page = router.activeRoute.attributes.page.value;
+  document.querySelector('paper-tabs').selected = page;
+</script>
 </body>
 </html>
