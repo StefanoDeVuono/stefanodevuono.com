@@ -48,6 +48,10 @@
     #tabs paper-tab {
       cursor: pointer;
     }
+    #tabs paper-tab a {
+      color: white;
+      text-decoration: none;
+    }
 
     #tabs::shadow div#selectionBar {
       background: plum;
@@ -90,44 +94,27 @@
   <core-header-panel>
     <core-toolbar layout horizontal>
         <paper-tabs id="tabs" selected="bio" link flex>
-            <paper-tab>
+            <paper-tab name="bio">
               <a href="#/" horizontal center-center layout>Stefano</a>
             </paper-tab>
-              <paper-tab>
+              <paper-tab name="portfolio">
                 <a href="#/portfolio" horizontal center-center layout>Portfolio</a>
               </paper-tab>
-            <paper-tab>
+            <paper-tab name="cv">
               <a href="#/cv" horizontal center-center layout>CV</a>
             </paper-tab>
-            <paper-tab>
+            <paper-tab name="links">
               <a href="#/links" horizontal center-center layout>Links</a>
             </paper-tab>
         </paper-tabs>
     </core-toolbar>
-<!--    <core-animated-pages selected="bio">-->
     <app-router>
       <app-route path="/" import="/elements/bio-element.html"></app-route>
       <app-route path="/portfolio" import="/elements/portfolio-element.html"></app-route>
       <app-route path="/cv" import="/elements/cv-element.html"></app-route>
-      <app-route path="/links" import="/elements/link-element.html"></app-route>
+      <app-route path="/links" import="/elements/links-element.html"></app-route>
     </app-router>
-
-<!--
-      <bio-element name="bio"></bio-element>
-      <portfolio-element name="portfolio"></portfolio-element>
-      <cv-element name="cv"></cv-element>
-      <links-element name="links"></links-element>
--->
-<!--    </core-animated-pages>-->
   </core-header-panel>
 
 </body>
-<script>
-  var tabs = document.querySelector('paper-tabs');
-  var pages = document.querySelector('core-animated-pages');
-
-  tabs.addEventListener('core-select',function(){
-    pages.selected = tabs.selected;
-  });
-</script>
 </html>
