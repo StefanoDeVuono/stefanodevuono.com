@@ -3,6 +3,48 @@
 
 <polymer-element class="page-element" name="portfolio-element" noscript>
   <template>
-    <p>All teh portfolios are belong ot us</p>
+  <style>
+    .portfolio-link {
+      display: inline-block;
+      background-color: green;
+      min-width: 150px;
+      width: 150px;
+      height: 150px;
+      margin: 10px auto;
+      border-radius: 75px;
+      -webkit-border-radius: 75px;
+      -moz-border-radius: 75px;
+      overflow: hidden;
+    }
+    .portfolio-link img {
+      height: 100%;
+    }
+    </style>
+   <section class="page-section" horizontal around-justified layout wrap>
+     <a class="portfolio-link" href="#">
+       <span>text</span>
+       <img src="/elements/portfolio/bamf.png" alt="">
+     </a>
+     <a class="portfolio-link" href="#">
+       <span>text</span>
+       <img src="/elements/portfolio/gdt.png" alt="">
+     </a>
+     <a class="portfolio-link" href="#">
+       <span>text</span>
+       <img src="/elements/portfolio/jackfre.png" alt="">
+     </a>
+     <a class="portfolio-link" href="#">
+       <span>text</span>
+       <img src="/elements/portfolio/nuagedeson.png" alt="">
+     </a>
+     <a class="portfolio-link" href="#">
+       <span>text</span>
+       <img src="/elements/portfolio/tic_tac_toe.png" alt="">
+     </a>
+     <a class="portfolio-link" href="#">
+       <span>text</span>
+       <img src="/elements/portfolio/tommaso.png" alt="">
+     </a>
+   </section>
   </template>
 </polymer-element>

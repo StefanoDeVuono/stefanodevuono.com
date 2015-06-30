@@ -25,21 +25,21 @@
   <core-header-panel>
     <core-toolbar layout horizontal>
         <paper-tabs id="tabs" link flex>
-            <paper-tab name="#/">
-              <a href="#/" horizontal center-center layout>Stefano</a>
+            <paper-tab name="/">
+              <a is="pushstate-anchor" href="/" horizontal center-center layout>Stefano</a>
             </paper-tab>
-              <paper-tab name="#/portfolio">
-                <a href="#/portfolio" horizontal center-center layout>Portfolio</a>
-              </paper-tab>
-            <paper-tab name="#/cv">
-              <a href="#/cv" horizontal center-center layout>CV</a>
+            <paper-tab name="/portfolio">
+              <a is="pushstate-anchor" href="/portfolio" horizontal center-center layout>Portfolio</a>
             </paper-tab>
-            <paper-tab name="#/links">
-              <a href="#/links" horizontal center-center layout>Links</a>
+            <paper-tab name="/cv">
+              <a is="pushstate-anchor" href="/cv" horizontal center-center layout>CV</a>
+            </paper-tab>
+            <paper-tab name="/links">
+              <a is="pushstate-anchor" href="/links" horizontal center-center layout>Links</a>
             </paper-tab>
         </paper-tabs>
     </core-toolbar>
-    <app-router>
+    <app-router trailingSlash="ignore">
       <app-route path="/" page="bio" import="/elements/bio-element.html"></app-route>
       <app-route path="/portfolio" page="portfolio" import="/elements/portfolio-element.html"></app-route>
       <app-route path="/cv" page="cv" import="/elements/cv-element.html"></app-route>
@@ -47,9 +47,8 @@
     </app-router>
   </core-header-panel>
 <script>
-  var hash = window.location.hash
-  hash = "" ? "#/" : hash;
-  document.querySelector('paper-tabs').selected = hash;
+//  var hash = window.location.hash || "#/";
+//  document.querySelector('paper-tabs').selected = hash;
 </script>
 </body>
 </html>
