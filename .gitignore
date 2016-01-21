@@ -1,5 +1,7 @@
 node_modules
 dist
+tumblr
 bower_components
 .tmp
 .publish/
+.DS_Store

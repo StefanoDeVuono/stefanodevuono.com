@@ -1,23 +1,13 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<html lang="en">
+change
+<html lang="">
 
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Polymer Starter Kit">
-  <title>Polymer Starter Kit</title>
-
+  <meta name="generator" content="Polymer Starter Kit" />
+  <title>Stefano De Vuono</title>
   <!-- Place favicon.ico in the `app/` directory -->
 
   <!-- Chrome for Android theme color -->
@@ -48,165 +38,560 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- endbuild-->
 
   <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="./bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
   <!-- endbuild -->
 
-  <!-- Because this project uses vulcanize this should be your only html import
-       in this file. All other imports should go in elements.html -->
+  <!-- will be replaced with elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
+  <!-- endreplace-->
 
   <!-- For shared styles, shared-styles.html import in elements.html -->
   <style is="custom-style" include="shared-styles"></style>
+  <style is="custom-style">
+  :root {
+    --paper-tab-ink: #512da8;
+    --paper-tabs-selection-bar-color:  #512da8;
+  }
+  paper-tabs, paper-toolbar {
+      background-color: #212121;
+      color: #fff;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    }
+    paper-toolbar paper-tabs {
+      box-shadow: none;
+    }
+    paper-tabs[noink][no-bar] paper-tab.iron-selected {
+      color: var(--paper-tab-ink);
+    }
+    paper-tabs[align-bottom] {
+      box-shadow: 0px -2px 6px rgba(0, 0, 0, 0.15);
+    }
+    paper-tabs a {
+      color: #fff;
+    }
+    .link {
+      text-decoration: none;
+      @apply(--layout-horizontal);
+      @apply(--layout-center-center);
+    }
+
+    /* list items and stuff */
+    .list {
+      @apply(--layout-vertical);
+      padding-top: 12px;
+      background-color: white;
+      width: 240px;
+      /*height: 228px;*/
+      margin: 12px;
+      @apply(--shadow-elevation-2dp);
+    }
+    .short {
+      padding-top: 12px;
+      height: 216px;
+    }
+    h4 {
+      margin-left: 24px;
+    }
+    .avatar {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #ccc;
+    }
+    .blue {
+      background-color: var(--paper-light-blue-300);
+    }
+    .red {
+      background-color: var(--paper-red-300);
+    }
+    .orange {
+      background-color: var(--paper-amber-300);
+    }
+    .green {
+      background-color: var(--paper-green-300);
+    }
+    .container {
+      @apply(--layout-wrap);
+      @apply(--layout-center-center);
+      @apply(--layout-inline);
+    }
+    .flex {
+      @apply(--layout-flex);
+    }
+
+    paper-progress {
+      display: block;
+      width: 100%;
+      margin: 20px 0;
+    }
+    paper-progress.blue {
+      --paper-progress-active-color: var(--paper-light-blue-500);
+      --paper-progress-secondary-color: var(--paper-light-blue-100);
+    }
+    paper-progress.red {
+      --paper-progress-active-color: var(--paper-red-500);
+      --paper-progress-secondary-color: var(--paper-red-100);
+    }
+    paper-progress.orange {
+      --paper-progress-active-color: var(--paper-orange-500);
+      --paper-progress-secondary-color: var(--paper-orange-100);
+    }
+    paper-progress.green {
+      --paper-progress-active-color: var(--paper-light-green-500);
+      --paper-progress-secondary-color: var(--paper-light-green-100);
+    }
+
+    /*paper-card styles*/
+    body {
+      background-color: var(--paper-grey-50);
+    }
+    #cards {
+      @apply(--layout-vertical);
+      @apply(--center-justified);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    paper-card {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    .avatar {
+      display: inline-block;
+      height: 64px;
+      width: 64px;
+      border-radius: 50%;
+      background: var(--paper-pink-500);
+      color: white;
+      line-height: 64px;
+      font-size: 30px;
+      text-align: center;
+    }
+    .fancy .title {
+      position: absolute;
+      top: 30px;
+      left: 100px;
+      color: var(--paper-indigo-500);
+    }
+    .fancy img {
+      width: 100%;
+    }
+    .fancy .big {
+      font-size: 22px;
+      padding: 8px 0 16px;
+      color: var(--google-grey-500);
+    }
+    .fancy .medium {
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+    .pink {
+      --paper-card-header-color: var(--paper-pink-500);
+    }
+    .tall-icon {
+      position: relative;
+      top: -10px;
+      height: 40px;
+    }
+    .med-icon {
+      position: relative;
+      top: -5px;
+      height: 32px;
+    }
+
+    /*let's try to get the sections working correctly*/
+    paper-tabs {
+      position: fixed;
+      z-index: 10;
+      width: 100%;
+    }
+    iron-pages {
+
+    }
+  </style>
+
 </head>
 
-<body unresolved>
-  <span id="browser-sync-binding"></span>
-  <template is="dom-bind" id="app">
+  <body class="fullbleed layout vertical">
+    <span id="browser-sync-binding"></span>
+    <template is="dom-bind" id="app">
+      <paper-tabs attr-for-selected="data-route" selected="{{route}}">
+        <paper-tab data-route="about" link>
+          <a href="{{baseUrl}}" class="link">About</a>
+        </paper-tab>
+        <paper-tab data-route="cv" link>
+          <a href="{{baseUrl}}cv" class="link">CV</a>
+        </paper-tab>
+        <paper-tab data-route="blog" link>
+          <a href="{{baseUrl}}blog" class="link">Blog</a>
+        </paper-tab>
+      </paper-tabs>
 
-    <paper-drawer-panel id="paperDrawerPanel">
-      <!-- Drawer Scroll Header Panel -->
-      <paper-scroll-header-panel drawer fixed>
+      <iron-pages attr-for-selected="data-route" selected="{{route}}">
+        <section data-route="about" class="section">
+          <iron-image  sizing="contain" preload fade src="http://lorempixel.com/400/400"></iron-image>
+          <iron-image src="/images/stefano.png"></iron-image>
+          <!-- <p>I like a challenge. I learned Quark, Photoshop and Illustrator in French before I was fluent in French. I wrote my first university essay on emacs on my new Linux install. I left school to found a small dance company and realizing that no one would do it for me, I taught myself CSS and HTML. I coded everything by hand. I eventually learned enough JavaScript and AJAX to implement Stuart Rackhams's DOM Popup Kit, based on prototype. I even sent him a few corrections. I started getting into PHP and jQuery to create custom WordPress templates all while learning HTML5 and CSS3. I learned Ruby and node.js and created a cloud-based image security system. I care about design, use and code and I like to learn.</p> -->
+          <p>I'm a web (and sometimes embedded hardware) developer at <a href="//depict.com">Depict</a>, a San Francisco based digital art company. I've always straddled a line between art and technology: design and code. I wrote my first university essay on emacs on my new Linux install. I ran a dance company and taught myself JavaScript to make a more interactive website. I've dabbled in design (print and UX). I've worked in PHP, HTML, CSS. My current work has mainly been in JavaScript, Ruby and Java.</p>
+        </section>
 
-        <!-- Drawer Toolbar -->
-        <paper-toolbar id="drawerToolbar">
-          <span class="menu-name">Menu</span>
-        </paper-toolbar>
+         <section data-route="cv" class="container section">
 
-        <!-- Drawer Content -->
-        <paper-menu attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="{{baseUrl}}">
-            <iron-icon icon="home"></iron-icon>
-            <span>Home</span>
-          </a>
-
-          <a data-route="users" href="{{baseUrl}}users">
-            <iron-icon icon="info"></iron-icon>
-            <span>Users</span>
-          </a>
-
-          <a data-route="contact" href="{{baseUrl}}contact">
-            <iron-icon icon="mail"></iron-icon>
-            <span>Contact</span>
-          </a>
-        </paper-menu>
-      </paper-scroll-header-panel>
-
-      <!-- Main Area -->
-      <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
-        <!-- Main Toolbar -->
-        <paper-toolbar id="mainToolbar" class="tall">
-          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
-
-          <span class="space"></span>
-
-          <!-- Toolbar icons -->
-          <paper-icon-button icon="refresh"></paper-icon-button>
-          <paper-icon-button icon="search"></paper-icon-button>
-
-          <!-- Application name -->
-          <div class="middle middle-container">
-            <div class="app-name">Polymer Starter Kit</div>
+          <div>
+            <h4>Back End</h4>
+            <div class="list" role="listbox">
+              <paper-icon-item disabled>
+                <iron-icon icon="custom-icons:rails" class="tall-icon" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>Ruby on Rails</div>
+                  <div secondary><paper-progress value="60" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:node" class="med-icon" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>Node.js</div>
+                  <div secondary><paper-progress value="80" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+            </div>
           </div>
 
-          <!-- Application sub title -->
-          <div class="bottom bottom-container">
-            <div class="bottom-title">The future of the web today</div>
+          <div>
+            <h4>Front End</h4>
+            <div class="list" role="listbox">
+              <paper-icon-item disabled>
+                <iron-icon icon="custom-icons:htmlcss" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>HTML/CSS</div>
+                  <div secondary><paper-progress value="60" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+              <paper-icon-item disabled>
+                <iron-icon icon="custom-icons:javascript" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>JavaScript</div>
+                  <div secondary><paper-progress value="60" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+              <paper-icon-item disabled>
+                <iron-icon icon="custom-icons:react" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>React.js</div>
+                  <div secondary><paper-progress value="80" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+              <paper-icon-item disabled>
+                <iron-icon icon="custom-icons:backbone" class="tall-icon" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>Backbone.js</div>
+                  <div secondary><paper-progress value="80" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+            </div>
           </div>
-        </paper-toolbar>
 
-        <!-- Main Content -->
-        <div class="content">
-          <iron-pages attr-for-selected="data-route" selected="{{route}}">
-            <section data-route="home">
-              <paper-material elevation="1">
-                <my-greeting></my-greeting>
+          <div>
+            <h4>Databases</h4>
+            <div class="list" role="listbox">
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:postgres" class="tall-icon" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>PostgreSQL/MySQL</div>
+                  <div secondary><paper-progress value="60" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:mongodb" class="tall-icon" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>MongoDB</div>
+                  <div secondary><paper-progress value="80" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+            </div>
+          </div>
 
-                <p class="subhead">You now have:</p>
-                <my-list></my-list>
 
-                <p>Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
-              </paper-material>
+          <div>
+            <h4>Systems/Ops</h4>
+            <div class="list" role="listbox">
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:git" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>Git</div>
+                  <div secondary><paper-progress value="30" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:linux" class="tall-icon" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>Linux</div>
+                  <div secondary><paper-progress value="80" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:docker" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>Docker</div>
+                  <div secondary><paper-progress value="30" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:dns" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>DNS</div>
+                  <div secondary><paper-progress value="30" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+            </div>
+          </div>
 
-              <paper-material elevation="1">
-                <p>This is another card.</p>
-              </paper-material>
 
-              <paper-material elevation="1">
-                <h1 id="license">License</h1>
-                <p>Everything in this repo is BSD style license unless otherwise specified.</p>
-                <p>Copyright (c) 2015 The Polymer Authors. All rights reserved.</p>
-                <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
-                <ul>
-                <li>Redistributions of source code must retain the above copyright
-                notice, this list of conditions and the following disclaimer.</li>
-                <li>Redistributions in binary form must reproduce the above
-                copyright notice, this list of conditions and the following disclaimer
-                in the documentation and/or other materials provided with the
-                distribution.</li>
-                <li>Neither the name of Google Inc. nor the names of its
-                contributors may be used to endorse or promote products derived from
-                this software without specific prior written permission.</li>
-                </ul>
-                <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
-              </paper-material>
-            </section>
+          <div>
+            <h4>Design</h4>
+            <div class="list" role="listbox">
+              <!-- <p>I started out in print design, but I only have pretty basic notions. Recently, I've been learning a bit aobut user research and user testing. I've worked on a few projects in those domains.</p> -->
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:user-testing" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>User Testing/Research</div>
+                  <div secondary><paper-progress value="10" class="blue"></paper-progress></div>
+                </paper-item-body>
 
-            <section data-route="users">
-              <paper-material elevation="1">
-                <h2 class="page-title">Users</h2>
-                <p>This is the users section</p>
-                <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-                <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-                <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-                <a href$="{{baseUrl}}users/Sam">Sam</a>
-              </paper-material>
-            </section>
+              </paper-icon-item>
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:user-interface" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>User Interface</div>
+                  <div secondary><paper-progress value="10" class="blue"></paper-progress></div>
+                </paper-item-body>
 
-            <section data-route="user-info">
-              <paper-material elevation="1">
-                <h2 class="page-title">User: {{params.name}}</h2>
-                <div>This is {{params.name}}'s section</div>
-              </paper-material>
-            </section>
+              </paper-icon-item>
 
-            <section data-route="contact">
-              <paper-material elevation="1">
-                <h2 class="page-title">Contact</h2>
-                <p>This is the contact section</p>
-              </paper-material>
-            </section>
-          </iron-pages>
-        </div>
-      </paper-scroll-header-panel>
-    </paper-drawer-panel>
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:sketch" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>Sketch</div>
+                  <div secondary><paper-progress value="20" class="blue"></paper-progress></div>
+                </paper-item-body>
 
-    <paper-toast id="toast">
-      <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
-    </paper-toast>
+              </paper-icon-item>
 
-    <!-- Uncomment next block to enable Service Worker support (1/2) -->
-    <!--
-    <paper-toast id="caching-complete"
-                 duration="6000"
-                 text="Caching complete! This app will work offline.">
-    </paper-toast>
 
-    <platinum-sw-register auto-register
-                          clients-claim
-                          skip-waiting
-                          base-uri="bower_components/platinum-sw/bootstrap"
-                          on-service-worker-installed="displayInstalledToast">
-      <platinum-sw-cache default-cache-strategy="fastest"
-                         cache-config-file="cache-config.json">
-      </platinum-sw-cache>
-    </platinum-sw-register>
-    -->
+              <paper-icon-item>
+                <iron-icon icon="custom-icons:inkscape" item-icon></iron-icon>
+                <paper-item-body two-line>
+                  <div>Inkscape</div>
+                  <div secondary><paper-progress value="20" class="blue"></paper-progress></div>
+                </paper-item-body>
+              </paper-icon-item>
+            </div>
+          </div>
 
-  </template>
+        </section>
 
-  <!-- build:js scripts/app.js -->
-  <script src="scripts/app.js"></script>
-  <!-- endbuild-->
-</body>
+        <section data-route="blog" class="section">
+
+          <!-- <paper-card >
+            <div class="card-content">
+              Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
+            </div>
+            <div class="card-actions">
+              <paper-icon-button icon="favorite" title="favorite"></paper-icon-button>
+              <paper-icon-button icon="bookmark" title="bookmark"></paper-icon-button>
+              <paper-icon-button icon="cloud-upload" title="cloud-upload"></paper-icon-button>
+            </div>
+          </paper-card>
+
+          <paper-card heading="Blog Title" class="pink"
+                image="http://placehold.it/350x150">
+            <div class="card-content">
+              Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
+            </div>
+            <div class="card-actions">
+              <paper-button>No</paper-button>
+              <paper-button>Yes</paper-button>
+            </div>
+          </paper-card> -->
+
+          <header>
+            {block:IfLogoImage}<a href="/"><img src="{image:Logo}" class="logo" /></a>{/block:IfLogoImage}
+          	<h1><a href="/">{Title}</a></h1>
+          	{block:Description}
+          		<p>{Description}</p>
+          	{/block:Description}
+          </header>
+
+        		<div class="content wrap">
+        			<section class="posts">
+        				{block:NoSearchResults}
+        					<h2>Sorry, nothing found for &ldquo;{SearchQuery}&rdquo;.</h2>
+        				{/block:NoSearchResults}
+
+        				{block:TagPage}
+        					<h2 class="h1">#{Tag}</h2>
+        				{/block:TagPage}
+
+        				{block:Posts}
+        					<article class="post {PostType}">
+        						{block:Text}
+        							{block:Title}
+        								<a href="{Permalink}" class="post-title"><h2>{Title}</h2></a>
+        							{/block:Title}
+
+        							{Body}
+
+        							{block:More}<a href="{Permalink}" class="p">Read More &raquo;</a>{/block:More}
+
+        						{/block:Text}
+
+        						{block:Photo}
+        							{LinkOpenTag}
+                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+        							{LinkCloseTag}
+
+        							{block:Caption}
+        								{Caption}
+        							{/block:Caption}
+        						{/block:Photo}
+
+        						{block:Photoset}
+        							{Photoset-500}
+
+        							{block:Caption}
+        								{Caption}
+        							{/block:Caption}
+        						{/block:Photoset}
+
+        						{block:Quote}
+        							<blockquote>
+        								<p class="h3">&ldquo;{Quote}&rdquo;</p>
+
+        								{block:Source}
+        									<p class="source">&ndash; {Source}</p>
+        								{/block:Source}
+        							</blockquote>
+        						{/block:Quote}
+
+        						{block:Link}
+        							<h2><a href="{URL}"{Target}>{Name} &raquo;</a></h2>
+
+        							{block:Description}
+        								{Description}
+        							{/block:Description}
+        						{/block:Link}
+
+        						{block:Chat}
+        							{block:Title}
+        								<h2>{Title}</h2>
+        							{/block:Title}
+
+        							<ul>
+        								{block:Lines}
+        									<li class="{Alt}">
+        										{block:Label}
+        										    <b>{Label}</b>
+        										{/block:Label}
+
+        										{Line}
+        									</li>
+        								{/block:Lines}
+        							</ul>
+        						{/block:Chat}
+
+        						{block:Audio}
+
+        						  {AudioEmbed-640}
+
+        							{block:Caption}
+        								{Caption}
+        							{/block:Caption}
+        						{/block:Audio}
+
+        						{block:Video}
+        							{Video-700}
+
+        							{block:Caption}
+        								{Caption}
+        							{/block:Caption}
+        						{/block:Video}
+
+        						{block:Answer}
+        							<h2>{Asker} asked: <q>{Question}</q></h2>
+
+        							{Answer}
+        						{/block:Answer}
+
+        						{block:Date}
+        							<footer>
+        								<ul class="small">
+        									<li><a href="{Permalink}" title="{DayOfWeek}, {DayOfMonth} {Month} {Year}, {24Hour}:{Minutes}:{Seconds}">{TimeAgo}</a></li>
+        									{block:RebloggedFrom}<li class="source"> (reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>)</li>{/block:RebloggedFrom}
+        									{block:ContentSource}
+        										<li class="source">via <a href="{SourceURL}">{SourceTitle}</a></li>
+        									{/block:ContentSource}
+        								</ul>
+
+        								{block:PermalinkPage}
+                            {block:HasTags}
+          											<ul class="tags">
+          												{block:Tags}
+          													<li>
+          														<a href="{TagURL}">#{Tag}</a>
+          													</li>
+          												{/block:Tags}
+          											</ul>
+          									{/block:HasTags}
+        								{/block:PermalinkPage}
+
+        							</footer>
+        						{/block:Date}
+        					</article> <!-- /post -->
+
+          				{block:PostNotes}
+          				  <aside class="notes">
+            				  {block:NoteCount}<p>{NoteCountWithLabel}</p>{/block:NoteCount}
+            					{PostNotes-64}
+          				  </aside>
+          				{/block:PostNotes}
+
+        				{/block:Posts}
+
+        				{block:Pagination}
+        					<div class="pagination p">
+        						<span class="previous">{block:PreviousPage}<a href="{PreviousPage}" class="previous">{/block:PreviousPage}&laquo; Previous{block:PreviousPage}</a>{/block:PreviousPage}</span>
+        						<span class="page-numbers">{CurrentPage}/{TotalPages}</span>
+        						<span class="next">{block:NextPage}<a href="{NextPage}">{/block:NextPage}Next &raquo;{block:NextPage}</a>{/block:NextPage}</span>
+        					</div>
+        				{/block:Pagination}
+
+        			</section> <!-- /posts -->
+        		</div> <!-- /content -->
+
+        	<footer class="small wrap">
+          	{block:HasPages}
+          		<ul class="pages">
+        				{block:Pages}
+        					<li><a href="{URL}">{Label}</a></li>
+        				{/block:Pages}
+          		</ul>
+        		{/block:HasPages}
+        		{block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
+        	  {block:IfColophon}<p class="small">{text:Colophon}</p>{block:IfColophon}
+        	</footer>
+
+        </section>
+        <footer>
+           © 2016 Stefano De Vuono
+        </footer>
+
+      </iron-pages>
+    </template>
+
+    <script src="scripts/app.js"></script>
+
+  </body>
 
 </html>

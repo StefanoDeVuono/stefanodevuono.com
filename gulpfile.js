@@ -301,6 +301,30 @@ gulp.task('default', ['clean'], function(cb) {
     cb);
 });
 
+gulp.task('tumblr-vulcanize', function() {
+  return gulp.src('app/index.html')
+    .pipe($.vulcanize({
+      // redirects: [
+      //   'https:/eatshit.example.com|bower_components/webcomponentsjs/webcomponents-lite.js'
+      // ],
+      stripComments: true,
+      inlineCss: true,
+      inlineScripts: true
+    }))
+    .pipe(gulp.dest(dist('./')))
+    .pipe($.size({title: 'vulcanize-what-the-actual-fuck'}));
+});
+
+gulp.task('tumblr', ['clean'], function(cb) {
+  DIST = 'tumblr';
+  runSequence(
+    ['copy', 'styles'],
+    'elements',
+    ['lint', 'images', 'fonts', 'html'],
+    'vulcanize', 'tumblr-vulcanize', // 'cache-config',
+    cb);
+});
+
 // Build then deploy to GitHub pages gh-pages branch
 gulp.task('build-deploy-gh-pages', function(cb) {
   runSequence(
