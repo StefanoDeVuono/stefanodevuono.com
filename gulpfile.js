@@ -84,11 +84,11 @@ var optimizeHtmlTask = function(src, dest) {
     .pipe(assets.restore())
     .pipe($.useref())
     // Minify any HTML
-    .pipe($.if('*.html', $.minifyHtml({
-      quotes: true,
-      empty: true,
-      spare: true
-    })))
+     .pipe($.if('*.html', $.minifyHtml({
+       quotes: true,
+       empty: true,
+       spare: true
+     })))
     // Output files
     .pipe(gulp.dest(dest))
     .pipe($.size({
@@ -233,6 +233,7 @@ gulp.task('cache-config', function(callback) {
 
 // Clean output directory
 gulp.task('clean', function() {
+  //  del(['tumblr']);
   return del(['.tmp', dist()]);
 });
 
@@ -304,15 +305,12 @@ gulp.task('default', ['clean'], function(cb) {
 gulp.task('tumblr-vulcanize', function() {
   return gulp.src('app/index.html')
     .pipe($.vulcanize({
-      // redirects: [
-      //   'https:/eatshit.example.com|bower_components/webcomponentsjs/webcomponents-lite.js'
-      // ],
       stripComments: true,
       inlineCss: true,
       inlineScripts: true
     }))
     .pipe(gulp.dest(dist('./')))
-    .pipe($.size({title: 'vulcanize-what-the-actual-fuck'}));
+    .pipe($.size({title: 'vulcanize'}));
 });
 
 gulp.task('tumblr', ['clean'], function(cb) {

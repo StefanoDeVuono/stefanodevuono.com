@@ -1,5 +1,4 @@
 <!doctype html>
-change
 <html lang="">
 
 <head>
@@ -213,23 +212,23 @@ change
   </style>
 
 </head>
-
+TEST 8:34
   <body class="fullbleed layout vertical">
     <span id="browser-sync-binding"></span>
     <template is="dom-bind" id="app">
-      <paper-tabs attr-for-selected="data-route" selected="{{route}}">
+      <paper-tabs attr-for-selected="data-route" selected="{{{route}route}}" your="mom">
         <paper-tab data-route="about" link>
-          <a href="{{baseUrl}}" class="link">About</a>
+          <a href="/" class="link">About</a>
         </paper-tab>
         <paper-tab data-route="cv" link>
-          <a href="{{baseUrl}}cv" class="link">CV</a>
+          <a href="/cv" class="link">CV</a>
         </paper-tab>
         <paper-tab data-route="blog" link>
-          <a href="{{baseUrl}}blog" class="link">Blog</a>
+          <a href="/blog" class="link">Blog</a>
         </paper-tab>
       </paper-tabs>
 
-      <iron-pages attr-for-selected="data-route" selected="{{route}}">
+      <iron-pages attr-for-selected="data-route" selected="{{{route}route}}">
         <section data-route="about" class="section">
           <iron-image  sizing="contain" preload fade src="http://lorempixel.com/400/400"></iron-image>
           <iron-image src="/images/stefano.png"></iron-image>
@@ -392,36 +391,18 @@ change
 
         </section>
 
-        <section data-route="blog" class="section">
-
-          <!-- <paper-card >
-            <div class="card-content">
-              Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
-            </div>
-            <div class="card-actions">
-              <paper-icon-button icon="favorite" title="favorite"></paper-icon-button>
-              <paper-icon-button icon="bookmark" title="bookmark"></paper-icon-button>
-              <paper-icon-button icon="cloud-upload" title="cloud-upload"></paper-icon-button>
-            </div>
-          </paper-card>
-
-          <paper-card heading="Blog Title" class="pink"
-                image="http://placehold.it/350x150">
-            <div class="card-content">
-              Lorem ipsum dolor sit amet, nec ad conceptam interpretaris, mea ne solet repudiandae. Laudem nostrud ei vim. Sapientem consequuntur usu ad, vel etiam philosophia ex, ad quidam option quo. Sed sale integre pericula ei, rebum adipiscing ius ea.
-            </div>
-            <div class="card-actions">
-              <paper-button>No</paper-button>
-              <paper-button>Yes</paper-button>
-            </div>
-          </paper-card> -->
+         <section data-route="blog" class="section">
 
           <header>
-            {block:IfLogoImage}<a href="/"><img src="{image:Logo}" class="logo" /></a>{/block:IfLogoImage}
-          	<h1><a href="/">{Title}</a></h1>
-          	{block:Description}
-          		<p>{Description}</p>
-          	{/block:Description}
+            <paper-card heading="{Title}" class="pink"
+                  {block:IfLogoImage}image="{image:Logo}"{/block:IfLogoImage}
+                  >
+              <div class="card-content">
+              {block:Description}
+                  <p>{Description}</p>
+                {/block:Description}
+              </div>
+            </paper-card>
           </header>
 
         		<div class="content wrap">
@@ -435,129 +416,142 @@ change
         				{/block:TagPage}
 
         				{block:Posts}
-        					<article class="post {PostType}">
-        						{block:Text}
-        							{block:Title}
-        								<a href="{Permalink}" class="post-title"><h2>{Title}</h2></a>
-        							{/block:Title}
+                  <article class="post {PostType}">
+    {block:Text}
+      {block:Title}
+        <paper-card heading="{Title}" class="pink">
+      {/block:Title}
+      <div class="card-content">
+        {Body}
+      </div>
+      {block:More}
+        <div class="card-actions">
+          <paper-button><a href="{Permalink}" class="p">Read More &raquo;</a></paper-button>
+        </div>
+      {/block:More}
 
-        							{Body}
+    {/block:Text}
 
-        							{block:More}<a href="{Permalink}" class="p">Read More &raquo;</a>{/block:More}
+    {block:Photo}
+      {LinkOpenTag}
+      <paper-card class="pink"
+            image="{PhotoURL-HighRes}">
+            <div class="card-header-image-text">{Caption}</div>
+      {LinkCloseTag}
 
-        						{/block:Text}
+    {/block:Photo}
 
-        						{block:Photo}
-        							{LinkOpenTag}
-                        <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
-        							{LinkCloseTag}
+    {block:Photoset}
+      {block:Caption}
+        <paper-card class="pink"
+          image="{Photoset-500}">
+          <div class="card-header-image">{Caption}</div>
+      {/block:Caption}
+    {/block:Photoset}
 
-        							{block:Caption}
-        								{Caption}
-        							{/block:Caption}
-        						{/block:Photo}
+    {block:Quote}
+      <paper-card class='fancy'>
+        <div class="card-content">
+          <div class="big">&ldquo;{Quote}&rdquo;</div>
 
-        						{block:Photoset}
-        							{Photoset-500}
+          {block:Source}
+            <div class="small">&ndash; {Source}</div>
+          {/block:Source}
 
-        							{block:Caption}
-        								{Caption}
-        							{/block:Caption}
-        						{/block:Photoset}
+        </div>
 
-        						{block:Quote}
-        							<blockquote>
-        								<p class="h3">&ldquo;{Quote}&rdquo;</p>
+    {/block:Quote}
 
-        								{block:Source}
-        									<p class="source">&ndash; {Source}</p>
-        								{/block:Source}
-        							</blockquote>
-        						{/block:Quote}
+    {block:Link}
+      <paper-card>
+        <div class="card-content">
+          <a href="{URL}"{Target}><paper-button raised>{Name} &raquo;</paper-button></a>
+          {block:Description}
+            <div>
+              <b>{Description}</b>
+            </div>
+          {/block:Description}
+        </div>
 
-        						{block:Link}
-        							<h2><a href="{URL}"{Target}>{Name} &raquo;</a></h2>
+    {/block:Link}
 
-        							{block:Description}
-        								{Description}
-        							{/block:Description}
-        						{/block:Link}
+    {block:Chat}
+      <paper-card
+      {block:Title}
+        heading="{Title}"
+      {/block:Title}
+      >
 
-        						{block:Chat}
-        							{block:Title}
-        								<h2>{Title}</h2>
-        							{/block:Title}
+      {block:Lines}
+        <div class="card-actions">
+          {block:Label}
+            <div class="medium">{Label}</div>
+          {/block:Label}
 
-        							<ul>
-        								{block:Lines}
-        									<li class="{Alt}">
-        										{block:Label}
-        										    <b>{Label}</b>
-        										{/block:Label}
+          <div class="small">{Line}</div>
+        </div>
+      {/block:Lines}
 
-        										{Line}
-        									</li>
-        								{/block:Lines}
-        							</ul>
-        						{/block:Chat}
 
-        						{block:Audio}
+    {/block:Chat}
 
-        						  {AudioEmbed-640}
+    {block:Audio}
+      {block:Caption}
+        <paper-card heading="{Caption}" class="pink">
+          {AudioEmbed-640}
 
-        							{block:Caption}
-        								{Caption}
-        							{/block:Caption}
-        						{/block:Audio}
+      {/block:Caption}
+    {/block:Audio}
 
-        						{block:Video}
-        							{Video-700}
+    {block:Video}
+      {block:Caption}
+        <paper-card heading="{Caption}" class="pink">
+          {Video-700}
 
-        							{block:Caption}
-        								{Caption}
-        							{/block:Caption}
-        						{/block:Video}
+      {/block:Caption}
+    {/block:Video}
 
-        						{block:Answer}
-        							<h2>{Asker} asked: <q>{Question}</q></h2>
+    {block:Answer}
+      <paper-card  heading="{Asker} asked: {Question}" class="pink">
+        <div class="card-content">
+          {Answer}
+        </div>
 
-        							{Answer}
-        						{/block:Answer}
+    {/block:Answer}
 
-        						{block:Date}
-        							<footer>
-        								<ul class="small">
-        									<li><a href="{Permalink}" title="{DayOfWeek}, {DayOfMonth} {Month} {Year}, {24Hour}:{Minutes}:{Seconds}">{TimeAgo}</a></li>
-        									{block:RebloggedFrom}<li class="source"> (reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>)</li>{/block:RebloggedFrom}
-        									{block:ContentSource}
-        										<li class="source">via <a href="{SourceURL}">{SourceTitle}</a></li>
-        									{/block:ContentSource}
-        								</ul>
+    {block:Date}
+        <div class="card-actions">
+          <a href="{Permalink}" title="{DayOfWeek}, {DayOfMonth} {Month} {Year}, {24Hour}:{Minutes}:{Seconds}">{TimeAgo}</a></li>
+          {block:RebloggedFrom}<li class="source"> (reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>)</li>{/block:RebloggedFrom}
+          {block:ContentSource}
+            <li class="source">via <a href="{SourceURL}">{SourceTitle}</a></li>
+          {/block:ContentSource}
+        </div>
 
-        								{block:PermalinkPage}
-                            {block:HasTags}
-          											<ul class="tags">
-          												{block:Tags}
-          													<li>
-          														<a href="{TagURL}">#{Tag}</a>
-          													</li>
-          												{/block:Tags}
-          											</ul>
-          									{/block:HasTags}
-        								{/block:PermalinkPage}
+        {block:PermalinkPage}
+            {block:HasTags}
+                <ul class="tags">
+                  {block:Tags}
+                    <li>
+                      <a href="{TagURL}">#{Tag}</a>
+                    </li>
+                  {/block:Tags}
+                </ul>
+            {/block:HasTags}
+        {/block:PermalinkPage}
 
-        							</footer>
-        						{/block:Date}
-        					</article> <!-- /post -->
+      </footer>
+    {/block:Date}
+  </paper-card> <!-- /post -->
 
-          				{block:PostNotes}
-          				  <aside class="notes">
-            				  {block:NoteCount}<p>{NoteCountWithLabel}</p>{/block:NoteCount}
-            					{PostNotes-64}
-          				  </aside>
-          				{/block:PostNotes}
+  {block:PostNotes}
+    <aside class="notes">
+      {block:NoteCount}<p>{NoteCountWithLabel}</p>{/block:NoteCount}
+      {PostNotes-64}
+    </aside>
+  {/block:PostNotes}
 
-        				{/block:Posts}
+{/block:Posts}
 
         				{block:Pagination}
         					<div class="pagination p">
