@@ -1,3 +1,5 @@
-
-config.rb
-sass/susy
+node_modules
+dist
+bower_components
+.tmp
+.publish/
