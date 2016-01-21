@@ -42,6 +42,7 @@ var AUTOPREFIXER_BROWSERS = [
 var DIST = 'dist';
 
 var dist = function(subpath) {
+  console.log('DIST is', DIST);
   return !subpath ? DIST : path.join(DIST, subpath);
 };
 
@@ -71,7 +72,7 @@ var optimizeHtmlTask = function(src, dest) {
   var assets = $.useref.assets({
     searchPath: ['.tmp', 'app']
   });
-
+  console.log(src);
   return gulp.src(src)
     .pipe(assets)
     // Concatenate and minify JavaScript
@@ -233,7 +234,7 @@ gulp.task('cache-config', function(callback) {
 
 // Clean output directory
 gulp.task('clean', function() {
-  //  del(['tumblr']);
+  del(['tumblr']);
   return del(['.tmp', dist()]);
 });
 
@@ -307,10 +308,16 @@ gulp.task('tumblr-vulcanize', function() {
     .pipe($.vulcanize({
       stripComments: true,
       inlineCss: true,
-      inlineScripts: true
+      inlineScripts: false
     }))
     .pipe(gulp.dest(dist('./')))
     .pipe($.size({title: 'vulcanize'}));
+});
+
+gulp.task('tumblr-minify', function() {
+  return optimizeHtmlTask(
+    [dist('/**/index.html')],
+    dist());
 });
 
 gulp.task('tumblr', ['clean'], function(cb) {
@@ -319,7 +326,7 @@ gulp.task('tumblr', ['clean'], function(cb) {
     ['copy', 'styles'],
     'elements',
     ['lint', 'images', 'fonts', 'html'],
-    'vulcanize', 'tumblr-vulcanize', // 'cache-config',
+    'vulcanize', 'tumblr-vulcanize', 'tumblr-minify', // 'cache-config',
     cb);
 });
 
