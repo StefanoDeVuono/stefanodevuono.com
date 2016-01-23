@@ -1,1 +1,0 @@
-!function(e,n){n.AnimationNode=function(n){var a=0,t=e.calculateActiveDuration(n),i=function(a){return e.calculateTimeFraction(t,a,n)};return i._totalDuration=n.delay+t+n.endDelay,i._isCurrent=function(a){var i=e.calculatePhase(t,a,n);return i===PhaseActive||i===PhaseBefore},i}}(webAnimationsShared,webAnimations1);
