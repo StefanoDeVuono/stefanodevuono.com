@@ -308,8 +308,9 @@ gulp.task('tumblr-vulcanize', function() {
     .pipe($.vulcanize({
       stripComments: true,
       inlineCss: true,
-      inlineScripts: false
+      inlineScripts: true
     }))
+    .pipe($.replace('{{route}}', '{{{route}route}}'))
     .pipe(gulp.dest(dist('./')))
     .pipe($.size({title: 'vulcanize'}));
 });
@@ -317,7 +318,9 @@ gulp.task('tumblr-vulcanize', function() {
 gulp.task('tumblr-minify', function() {
   return optimizeHtmlTask(
     [dist('/**/index.html')],
-    dist());
+    dist())
+    .pipe($.replace('{{route}}', '{{{route}route}}'))
+    .pipe(gulp.dest(dist('/')));
 });
 
 gulp.task('tumblr', ['clean'], function(cb) {
@@ -328,6 +331,50 @@ gulp.task('tumblr', ['clean'], function(cb) {
     ['lint', 'images', 'fonts', 'html'],
     'vulcanize', 'tumblr-vulcanize', 'tumblr-minify', // 'cache-config',
     cb);
+});
+
+gulp.task('serve:tumblr', ['tumblr'], function() {
+  browserSync({
+    port: 5001,
+    notify: false,
+    logPrefix: 'PSK',
+    snippetOptions: {
+      rule: {
+        match: '<span id="browser-sync-binding"></span>',
+        fn: function(snippet) {
+          return snippet;
+        }
+      }
+    },
+    // Run as an https by uncommenting 'https: true'
+    // Note: this uses an unsigned certificate which on first access
+    //       will present a certificate warning in the browser.
+    // https: true,
+    server: dist(),
+    middleware: [historyApiFallback()]
+  });
+});
+
+gulp.task('favicon', function() {
+  del(dist('favicons'));
+  return gulp.src('app/images/logo.png').pipe($.favicons({
+    appName: '',
+    background: '#fff',
+    online: false,
+    orientation: 'portrait',
+    icons: {
+      android: true,
+      appleIcon: true,
+      appleStartup: true,
+      coast: true,
+      favicons: true,
+      opengraph: true,
+      twitter: true,
+      windows: true,
+      yandex: true
+    },
+    logging: true
+  })).pipe(gulp.dest(dist('favicons')));
 });
 
 // Build then deploy to GitHub pages gh-pages branch

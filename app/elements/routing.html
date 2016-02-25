@@ -19,6 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // Removes end / from app.baseUrl which page.base requires for production
     if (window.location.port === '') {  // if production
       page.base(app.baseUrl.replace(/\/$/, ''));
+      console.log('app.baseUrl', app.baseUrl);
     }
 
     // Middleware
@@ -38,26 +39,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/', function() {
-      app.route = 'about';
+      app.route = 'bio';
     });
 
     page(app.baseUrl, function() {
-      app.route = 'about';
+      app.route = 'bio';
     });
 
-    page('/cv', function() {
-      app.route = 'cv';
+    page('/skills', function() {
+      app.route = 'skills';
     });
 
-    page('/blog', function() {
-      app.route = 'blog';
+    page('/notes', function() {
+      app.route = 'notes';
     });
 
     // 404
     page('*', function() {
-      app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
-      app.$.toast.show();
-      page.redirect(app.baseUrl);
+      console.log('404', window.location.href);
+      // app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
+      // app.$.toast.show();
+      // page.redirect(app.baseUrl);
     });
 
     // add #! before urls

@@ -2,35 +2,55 @@
 <html lang="">
 
 <head>
+  <script>
+    window.Tumblr = window.Tumblr||(window.Tumblr={postMessageQueue: []});
+  </script>
+
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Polymer Starter Kit" />
+  <meta name="generator" content="Stefano De Vuono" />
   <title>Stefano De Vuono</title>
   <!-- Place favicon.ico in the `app/` directory -->
 
   <!-- Chrome for Android theme color -->
-  <meta name="theme-color" content="#2E3AA1">
+  <meta name="theme-color" content="#FFFFFF">
 
   <!-- Web Application Manifest -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="http://example.com/mysite/icons/manifest.json">
 
   <!-- Tile color for Win8 -->
-  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-TileColor" content="#DA532C">
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="PSK">
-  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/IJEo1dtxv/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/ajjo1dtxw/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/5XUo1dtxv/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/eY5o1dtxq/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/Eaeo1dtxv/favicon-16x16.png" sizes="16x16">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
-  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Stefano Devuono">
+  <link rel="apple-touch-icon" sizes="57x57" href="//static.tumblr.com/ga2ilek/tQvo1dtxq/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="//static.tumblr.com/ga2ilek/zy3o1dtxr/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="//static.tumblr.com/ga2ilek/d4Do1dtxr/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="//static.tumblr.com/ga2ilek/Ykbo1dtxs/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="//static.tumblr.com/ga2ilek/1B6o1dtxs/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="//static.tumblr.com/ga2ilek/shyo1dtxs/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="//static.tumblr.com/ga2ilek/U7Mo1dtxt/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="//static.tumblr.com/ga2ilek/O5Uo1dtxt/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="//static.tumblr.com/ga2ilek/xXio1dtxt/apple-touch-icon-180x180.png">
+  <link rel="mask-icon" href="//static.tumblr.com/ga2ilek/VLNo1dtxy/safari-pinned-tab.svg" color="#5bbad5">
 
   <!-- Tile icon for Win8 (144x144) -->
-  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileImage" content="//static.tumblr.com/ga2ilek/YwFo1dtxx/mstile-150x150.png">
+
+  <meta name="msapplication-config" content="http://example.com/mysite/icons/browserconfig.xml">
 
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
@@ -74,6 +94,21 @@
       @apply(--layout-center-center);
     }
 
+    /* Image */
+    iron-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 75px;
+    /*    padding: 5px;*/
+      margin: 0 15px;
+      -webkit-border-radius: 75px;
+      -moz-border-radius: 75px;
+      float: left;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+      -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+      -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 1);
+    }
+
     /* list items and stuff */
     .list {
       @apply(--layout-vertical);
@@ -90,6 +125,10 @@
     }
     h4 {
       margin-left: 24px;
+    }
+    .transparent {
+      background-color: none;
+      --paper-card-background-color: none;
     }
     .avatar {
       display: inline-block;
@@ -215,27 +254,52 @@
   <body class="fullbleed layout vertical">
     <span id="browser-sync-binding"></span>
     <template is="dom-bind" id="app">
-      <paper-tabs attr-for-selected="data-route" selected="{{{route}route}}" your="mom">
-        <paper-tab data-route="about" link>
-          <a href="/" class="link">About</a>
+      <h4>route is {{route}}</h4>
+      <paper-tabs attr-for-selected="data-route" selected="{{route}}">
+        <paper-tab data-route="bio" link>
+          <a href="/" class="link">Bio</a>
         </paper-tab>
-        <paper-tab data-route="cv" link>
-          <a href="/cv" class="link">CV</a>
+        <paper-tab data-route="skills" link>
+          <a href="/skills" class="link">Skills</a>
         </paper-tab>
-        <paper-tab data-route="blog" link>
-          <a href="/blog" class="link">Blog</a>
+        <paper-tab data-route="notes" link>
+          <a href="/notes" class="link">Notes</a>
         </paper-tab>
       </paper-tabs>
 
-      <iron-pages attr-for-selected="data-route" selected="{{{route}route}}">
-        <section data-route="about" class="section">
-          <iron-image  sizing="contain" preload fade src="http://lorempixel.com/400/400"></iron-image>
-          <iron-image src="/images/stefano.png"></iron-image>
-          <!-- <p>I like a challenge. I learned Quark, Photoshop and Illustrator in French before I was fluent in French. I wrote my first university essay on emacs on my new Linux install. I left school to found a small dance company and realizing that no one would do it for me, I taught myself CSS and HTML. I coded everything by hand. I eventually learned enough JavaScript and AJAX to implement Stuart Rackhams's DOM Popup Kit, based on prototype. I even sent him a few corrections. I started getting into PHP and jQuery to create custom WordPress templates all while learning HTML5 and CSS3. I learned Ruby and node.js and created a cloud-based image security system. I care about design, use and code and I like to learn.</p> -->
-          <p>I'm a web (and sometimes embedded hardware) developer at <a href="//depict.com">Depict</a>, a San Francisco based digital art company. I've always straddled a line between art and technology: design and code. I wrote my first university essay on emacs on my new Linux install. I ran a dance company and taught myself JavaScript to make a more interactive website. I've dabbled in design (print and UX). I've worked in PHP, HTML, CSS. My current work has mainly been in JavaScript, Ruby and Java.</p>
+      <iron-pages attr-for-selected="data-route" selected="{{route}}">
+        <section data-route="bio" class="section">
+          <paper-card class="transparent" elevation="0">
+            <iron-image sizing="cover" preload fade src="//static.tumblr.com/ga2ilek/ipUo1bxbk/stefano.jpg"></iron-image>
+            <p>I'm a web (and sometimes embedded hardware) developer at <a href="//depict.com">Depict</a>, a San Francisco based digital art company. I've always straddled a line between art and technology: design and code. I wrote my first university essay on emacs on my new Linux install. I ran a dance company and taught myself JavaScript to make a more interactive website. I've dabbled in design (print and UX). I've worked in PHP, HTML, CSS. My current work has mainly been in JavaScript, Ruby and Java.</p>
+          </paper-card>
+
+            <h4>Contact info</h4>
+            <div class="short" role="listbox">
+              <a href="//github.com/StefanoDeVuono">
+                <paper-icon-item>
+                  <iron-icon icon="custom-icons:github" item-icon></iron-icon> StefanoDeVuono
+                </paper-icon-item>
+              </a>
+              <a href="//twitter.com/StefanoDeVuono">
+                <paper-icon-item>
+                  <iron-icon icon="custom-icons:twitter" item-icon></iron-icon> @StefanoDeVuono
+                </paper-icon-item>
+              </a>
+              <a href="//www.linkedin.com/in/stefanodevuono">
+                <paper-icon-item>
+                  <iron-icon icon="custom-icons:linkedin" item-icon></iron-icon> stefanodevuono
+                </paper-icon-item>
+              </a>
+              <a href="mailto:io@stefanodevuono.com">
+                <paper-icon-item>
+                  <iron-icon icon="custom-icons:email" item-icon></iron-icon> io@stefanodevuono.com
+                </paper-icon-item>
+              </a>
+            </div>
         </section>
 
-         <section data-route="cv" class="container section">
+         <section data-route="skills" class="container section">
 
           <div>
             <h4>Back End</h4>
@@ -390,7 +454,7 @@
 
         </section>
 
-         <section data-route="blog" class="section">
+         <section data-route="notes" class="section">
 
           <header>
             {block:IfLogoImage}
@@ -544,7 +608,7 @@
                     {PostNotes-64}
                   </aside>
                 {/block:PostNotes}
-                
+
               {/block:Posts}
 
               {block:Pagination}
@@ -574,11 +638,17 @@
         <footer>
            © 2016 Stefano De Vuono
         </footer>
+        
 
       </iron-pages>
     </template>
 
     <script src="//static.tumblr.com/ga2ilek/rcBo1bkb0/app.js"></script>
+    <script>
+      var is404 = function(){
+        console.log('404 is 404');
+      };
+    </script>
 
   </body>
 
