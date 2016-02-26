@@ -78,4 +78,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     //app.$.paperDrawerPanel.closeDrawer();
   };
 
+  // tumblr helper functions
+  app.isPhoto = function(type) {
+    return type === 'photo';
+  };
+  app.arrayItem = function(change, index, path) {
+    return this.get(path, change.base[index]);
+  };
+  app.isText = function(type) {
+    return type === 'text';
+  };
+
 })(document);

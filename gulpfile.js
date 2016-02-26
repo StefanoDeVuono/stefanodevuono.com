@@ -258,7 +258,9 @@ gulp.task('serve', ['lint', 'styles', 'elements'], function() {
     // https: true,
     server: {
       baseDir: ['.tmp', 'app'],
-      middleware: [historyApiFallback()]
+      middleware: [
+        historyApiFallback()
+      ]
     }
   });
 
@@ -299,7 +301,7 @@ gulp.task('default', ['clean'], function(cb) {
     ['copy', 'styles'],
     'elements',
     ['lint', 'images', 'fonts', 'html'],
-    'vulcanize', // 'cache-config',
+    'vulcanize', 'favicon', // 'cache-config',
     cb);
 });
 
@@ -357,8 +359,14 @@ gulp.task('serve:tumblr', ['tumblr'], function() {
 
 gulp.task('favicon', function() {
   del(dist('favicons'));
+
+  gulp.src('app/index.html')
+    .pipe($.replace('/manifest.json', '/favicons/manifest.json'))
+    .pipe($.replace('/browserconfig.xml', '/favicons/browserconfig.xml'))
+    .pipe(gulp.dest(dist()));
+
   return gulp.src('app/images/logo.png').pipe($.favicons({
-    appName: '',
+    appName: 'Stefano De Vuono',
     background: '#fff',
     online: false,
     orientation: 'portrait',
@@ -375,6 +383,13 @@ gulp.task('favicon', function() {
     },
     logging: true
   })).pipe(gulp.dest(dist('favicons')));
+});
+
+gulp.task('surge', ['default'], function() {
+  return $.surge({
+    project: dist(),         // Path to your static build directory
+    domain: 'stefanodevuono.com'  // Your domain or Surge subdomain
+  });
 });
 
 // Build then deploy to GitHub pages gh-pages branch

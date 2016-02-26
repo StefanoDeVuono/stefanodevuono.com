@@ -11,46 +11,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Stefano De Vuono" />
   <title>Stefano De Vuono</title>
-  <!-- Place favicon.ico in the `app/` directory -->
-
-  <!-- Chrome for Android theme color -->
-  <meta name="theme-color" content="#FFFFFF">
 
   <!-- Web Application Manifest -->
-  <link rel="manifest" href="http://example.com/mysite/icons/manifest.json">
-
-  <!-- Tile color for Win8 -->
-  <meta name="msapplication-TileColor" content="#DA532C">
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="PSK">
-  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/IJEo1dtxv/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/ajjo1dtxw/favicon-194x194.png" sizes="194x194">
-  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/5XUo1dtxv/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/eY5o1dtxq/android-chrome-192x192.png" sizes="192x192">
-  <link rel="icon" type="image/png" href="//static.tumblr.com/ga2ilek/Eaeo1dtxv/favicon-16x16.png" sizes="16x16">
-
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
-  <meta name="apple-mobile-web-app-title" content="Stefano Devuono">
-  <link rel="apple-touch-icon" sizes="57x57" href="//static.tumblr.com/ga2ilek/tQvo1dtxq/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="//static.tumblr.com/ga2ilek/zy3o1dtxr/apple-touch-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="//static.tumblr.com/ga2ilek/d4Do1dtxr/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="//static.tumblr.com/ga2ilek/Ykbo1dtxs/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="//static.tumblr.com/ga2ilek/1B6o1dtxs/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="//static.tumblr.com/ga2ilek/shyo1dtxs/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="//static.tumblr.com/ga2ilek/U7Mo1dtxt/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="//static.tumblr.com/ga2ilek/O5Uo1dtxt/apple-touch-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="//static.tumblr.com/ga2ilek/xXio1dtxt/apple-touch-icon-180x180.png">
-  <link rel="mask-icon" href="//static.tumblr.com/ga2ilek/VLNo1dtxy/safari-pinned-tab.svg" color="#5bbad5">
-
-  <!-- Tile icon for Win8 (144x144) -->
-  <meta name="msapplication-TileImage" content="//static.tumblr.com/ga2ilek/YwFo1dtxx/mstile-150x150.png">
-
-  <meta name="msapplication-config" content="http://example.com/mysite/icons/browserconfig.xml">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-config" content="/browserconfig.xml">
 
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
@@ -254,7 +218,6 @@
   <body class="fullbleed layout vertical">
     <span id="browser-sync-binding"></span>
     <template is="dom-bind" id="app">
-      <h4>route is {{route}}</h4>
       <paper-tabs attr-for-selected="data-route" selected="{{route}}">
         <paper-tab data-route="bio" link>
           <a href="/" class="link">Bio</a>
@@ -262,8 +225,8 @@
         <paper-tab data-route="skills" link>
           <a href="/skills" class="link">Skills</a>
         </paper-tab>
-        <paper-tab data-route="notes" link>
-          <a href="/notes" class="link">Notes</a>
+        <paper-tab data-route="blog" link>
+          <a href="/blog" class="link">Blog</a>
         </paper-tab>
       </paper-tabs>
 
@@ -454,201 +417,39 @@
 
         </section>
 
-         <section data-route="notes" class="section">
-
-          <header>
-            {block:IfLogoImage}
-              <paper-card heading="{Title}" class="pink" image="{image:Logo}">
-            {/block:IfLogoImage}
-            {block:IfNotLogoImage}
-              <paper-card heading="{Title}" class="pink">
-            {/block:IfNotLogoImage}
-              <div class="card-content">
-              {block:Description}
-                  <p>{Description}</p>
-                {/block:Description}
-              </div>
-            </paper-card>
-          </header>
-
-          <div class="content wrap">
-
-            <section class="posts">
-              {block:NoSearchResults}
-                <h2>Sorry, nothing found for &ldquo;{SearchQuery}&rdquo;.</h2>
-              {/block:NoSearchResults}
-
-              {block:TagPage}
-                 <h2 class="h1">#{Tag}</h2>
-              {/block:TagPage}
-
-                {block:Posts}
-                <article class="post {PostType}">
-
-                  {block:Text}
-                    {block:Title}
-                      <paper-card heading="{Title}" class="pink">
-                    {/block:Title}
-                    <div class="card-content">
-                      {Body}
-                    </div>
-                    {block:More}
-                      <div class="card-actions">
-                        <paper-button><a href="{Permalink}" class="p">Read More &raquo;</a></paper-button>
-                      </div>
-                    {/block:More}
-
-                  {/block:Text}
+        <section data-route="blog" class="section">
+          <byutv-jsonp
+            auto
+            url="https://api.tumblr.com/v2/blog/stefanodevuono.tumblr.com/posts/"
+            params='{"api_key":"fuiKNFp9vQFvjLNvx4sUwti4Yb5yGutBN4Xh10LXZhhRKjWlV4"}'
+            last-response="{{lastResponse}}"
+            last-error="{{lastError}}"
+            debounce-duration="300">
+          </byutv-jsonp>
 
 
-                  {block:Photo}
-                    {LinkOpenTag}
-                    <paper-card class="pink"
-                          image="{PhotoURL-HighRes}">
-                          <div class="card-header-image-text">{Caption}</div>
-                    {LinkCloseTag}
-
-                  {/block:Photo}
-
-                  {block:Photoset}
-                    {block:Caption}
-                      <paper-card class="pink"
-                        image="{Photoset-500}">
-                        <div class="card-header-image">{Caption}</div>
-                    {/block:Caption}
-                  {/block:Photoset}
-
-                  {block:Quote}
-                    <paper-card class='fancy'>
-                      <div class="card-content">
-                        <div class="big">&ldquo;{Quote}&rdquo;</div>
-
-                        {block:Source}
-                          <div class="small">&ndash; {Source}</div>
-                        {/block:Source}
-
-                      </div>
-
-                  {/block:Quote}
-
-                  {block:Link}
-                    <paper-card>
-                      <div class="card-content">
-                        <a href="{URL}"{Target}><paper-button raised>{Name} &raquo;</paper-button></a>
-                        {block:Description}
-                          <div>
-                            <b>{Description}</b>
-                          </div>
-                        {/block:Description}
-                      </div>
-
-                  {/block:Link}
-
-                  {block:Chat}
-                   {block:Title}
-                    <paper-card heading="{Title}">
-                    {/block:Title}
-                    {block:Lines}
-                      <div class="card-actions">
-                        {block:Label}
-                          <div class="medium">{Label}</div>
-                        {/block:Label}
-                        <div class="small">{Line}</div>
-                      </div>
-                    {/block:Lines}
-                  {/block:Chat}
-
-                  {block:Audio}
-                    {block:Caption}
-                      <paper-card heading="{Caption}" class="pink">
-                        {AudioEmbed-640}
-                    {/block:Caption}
-                  {/block:Audio}
-
-                  {block:Video}
-                    {block:Caption}
-                      <paper-card heading="{Caption}" class="pink">
-                        {Video-700}
-
-                    {/block:Caption}
-                  {/block:Video}
-
-                  {block:Answer}
-                    <paper-card  heading="{Asker} asked: {Question}" class="pink">
-                      <div class="card-content">
-                        {Answer}
-                      </div>
-                  {/block:Answer}
-
-                  {block:Date}
-                      <div class="card-actions">
-                        <a href="{Permalink}" title="{DayOfWeek}, {DayOfMonth} {Month} {Year}, {24Hour}:{Minutes}:{Seconds}">{TimeAgo}</a></li>
-                        {block:RebloggedFrom}<li class="source"> (reblogged from <a href="{ReblogParentURL}">{ReblogParentName}</a>)</li>{/block:RebloggedFrom}
-                        {block:ContentSource}
-                          <li class="source">via <a href="{SourceURL}">{SourceTitle}</a></li>
-                        {/block:ContentSource}
-                      </div>
-                      {block:PermalinkPage}
-                          {block:HasTags}
-                              <ul class="tags">
-                                {block:Tags}
-                                  <li>
-                                    <a href="{TagURL}">#{Tag}</a>
-                                  </li>
-                                {/block:Tags}
-                              </ul>
-                          {/block:HasTags}
-                      {/block:PermalinkPage}
-                  {/block:Date}
-                </paper-card> <!-- /post -->
-
-                {block:PostNotes}
-                  <aside class="notes">
-                    {block:NoteCount}<p>{NoteCountWithLabel}</p>{/block:NoteCount}
-                    {PostNotes-64}
-                  </aside>
-                {/block:PostNotes}
-
-              {/block:Posts}
-
-              {block:Pagination}
-                 <div class="pagination p">
-                    <span class="previous">{block:PreviousPage}<a href="{PreviousPage}" class="previous">{/block:PreviousPage}&laquo; Previous{block:PreviousPage}</a>{/block:PreviousPage}</span>
-                    <span class="page-numbers">{CurrentPage}/{TotalPages}</span>
-                    <span class="next">{block:NextPage}<a href="{NextPage}">{/block:NextPage}Next &raquo;{block:NextPage}</a>{/block:NextPage}</span>
-                 </div>
-              {/block:Pagination}
-
-             </section> <!-- /posts -->
-          </div> <!-- /content -->
-
-          <footer class="small wrap">
-            {block:HasPages}
-               <ul class="pages">
-                  {block:Pages}
-                     <li><a href="{URL}">{Label}</a></li>
-                  {/block:Pages}
-               </ul>
-            {/block:HasPages}
-            {block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
-           {block:IfColophon}<p class="small">{text:Colophon}</p>{block:IfColophon}
-          </footer>
+          <template is="dom-repeat" items="[[lastResponse.response.posts]]">
+              <template is="dom-if" if="[[isPhoto(item.type)]]">
+                <paper-card image="[[arrayItem(item.photos.*, 0, 'original_size.url')]]" class="amber">
+                <div class="card-content" inner-h-t-m-l=[[item.caption]]></</div>
+              </paper-card>
+              </template>
+              <template is="dom-if" if="[[isText(item.type)]]">
+                <div class="horizontal-section">
+                  <paper-card heading="[[item.title]]">
+                    <div class="card-content" inner-h-t-m-l=[[item.body]]></div>
+                  </paper-card>
+                </div>
+              </template>
+          </template>
 
         </section>
         <footer>
            © 2016 Stefano De Vuono
         </footer>
-        
 
       </iron-pages>
     </template>
-
-    <script src="//static.tumblr.com/ga2ilek/rcBo1bkb0/app.js"></script>
-    <script>
-      var is404 = function(){
-        console.log('404 is 404');
-      };
-    </script>
 
   </body>
 
