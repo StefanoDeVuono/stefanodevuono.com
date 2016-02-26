@@ -332,6 +332,9 @@ gulp.task('favicon', function() {
 
 // deploy to surge.sh
 gulp.task('surge', ['default'], function() {
+  gulp.src(dist('index.html'))
+  .pipe($.rename('200.html'))
+  .pipe(gulp.dest(dist()));
   return $.surge({
     project: dist(),         // Path to your static build directory
     domain: 'stefanodevuono.com'  // Your domain or Surge subdomain
