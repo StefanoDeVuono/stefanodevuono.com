@@ -42,7 +42,6 @@ var AUTOPREFIXER_BROWSERS = [
 var DIST = 'dist';
 
 var dist = function(subpath) {
-  console.log('DIST is', DIST);
   return !subpath ? DIST : path.join(DIST, subpath);
 };
 
@@ -72,7 +71,7 @@ var optimizeHtmlTask = function(src, dest) {
   var assets = $.useref.assets({
     searchPath: ['.tmp', 'app']
   });
-  console.log(src);
+
   return gulp.src(src)
     .pipe(assets)
     // Concatenate and minify JavaScript
@@ -85,11 +84,11 @@ var optimizeHtmlTask = function(src, dest) {
     .pipe(assets.restore())
     .pipe($.useref())
     // Minify any HTML
-     .pipe($.if('*.html', $.minifyHtml({
-       quotes: true,
-       empty: true,
-       spare: true
-     })))
+    .pipe($.if('*.html', $.minifyHtml({
+      quotes: true,
+      empty: true,
+      spare: true
+    })))
     // Output files
     .pipe(gulp.dest(dest))
     .pipe($.size({
@@ -234,7 +233,6 @@ gulp.task('cache-config', function(callback) {
 
 // Clean output directory
 gulp.task('clean', function() {
-  del(['tumblr']);
   return del(['.tmp', dist()]);
 });
 
@@ -258,9 +256,7 @@ gulp.task('serve', ['lint', 'styles', 'elements'], function() {
     // https: true,
     server: {
       baseDir: ['.tmp', 'app'],
-      middleware: [
-        historyApiFallback()
-      ]
+      middleware: [historyApiFallback()]
     }
   });
 
@@ -301,62 +297,11 @@ gulp.task('default', ['clean'], function(cb) {
     ['copy', 'styles'],
     'elements',
     ['lint', 'images', 'fonts', 'html'],
-    'vulcanize', 'favicon', // 'cache-config',
+    'vulcanize', // 'cache-config',
     cb);
 });
 
-gulp.task('tumblr-vulcanize', function() {
-  return gulp.src('app/index.html')
-    .pipe($.vulcanize({
-      stripComments: true,
-      inlineCss: true,
-      inlineScripts: true
-    }))
-    .pipe($.replace('{{route}}', '{{{route}route}}'))
-    .pipe(gulp.dest(dist('./')))
-    .pipe($.size({title: 'vulcanize'}));
-});
-
-gulp.task('tumblr-minify', function() {
-  return optimizeHtmlTask(
-    [dist('/**/index.html')],
-    dist())
-    .pipe($.replace('{{route}}', '{{{route}route}}'))
-    .pipe(gulp.dest(dist('/')));
-});
-
-gulp.task('tumblr', ['clean'], function(cb) {
-  DIST = 'tumblr';
-  runSequence(
-    ['copy', 'styles'],
-    'elements',
-    ['lint', 'images', 'fonts', 'html'],
-    'vulcanize', 'tumblr-vulcanize', 'tumblr-minify', // 'cache-config',
-    cb);
-});
-
-gulp.task('serve:tumblr', ['tumblr'], function() {
-  browserSync({
-    port: 5001,
-    notify: false,
-    logPrefix: 'PSK',
-    snippetOptions: {
-      rule: {
-        match: '<span id="browser-sync-binding"></span>',
-        fn: function(snippet) {
-          return snippet;
-        }
-      }
-    },
-    // Run as an https by uncommenting 'https: true'
-    // Note: this uses an unsigned certificate which on first access
-    //       will present a certificate warning in the browser.
-    // https: true,
-    server: dist(),
-    middleware: [historyApiFallback()]
-  });
-});
-
+// favicons
 gulp.task('favicon', function() {
   del(dist('favicons'));
 
@@ -385,6 +330,7 @@ gulp.task('favicon', function() {
   })).pipe(gulp.dest(dist('favicons')));
 });
 
+// deploy to surge.sh
 gulp.task('surge', ['default'], function() {
   return $.surge({
     project: dist(),         // Path to your static build directory
