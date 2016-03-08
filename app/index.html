@@ -233,8 +233,11 @@
       <iron-pages attr-for-selected="data-route" selected="{{route}}">
         <section data-route="bio" class="section">
           <paper-card class="transparent" elevation="0">
-            <iron-image sizing="cover" preload fade src="//static.tumblr.com/ga2ilek/ipUo1bxbk/stefano.jpg"></iron-image>
-            <p>I'm a web (and sometimes embedded hardware) developer at <a href="//depict.com">Depict</a>, a San Francisco based digital art company. I've always straddled a line between art and technology: design and code. I wrote my first university essay on emacs on my new Linux install. I ran a dance company and taught myself JavaScript to make a more interactive website. I've dabbled in design (print and UX). I've worked in PHP, HTML, CSS. My current work has mainly been in JavaScript, Ruby and Java.</p>
+            <div class="card-content">
+              <iron-image sizing="cover" preload fade src="//static.tumblr.com/ga2ilek/ipUo1bxbk/stefano.jpg"></iron-image>
+              <p>I'm a web (and sometimes embedded hardware) developer at <a href="//depict.com">Depict</a>, a San Francisco based digital art company. I've always straddled a line between art and technology, design and code. I wrote my first university essay on emacs on my new Linux install. I ran a dance company and taught myself JavaScript to make a more interactive website. I've dabbled in design (print and UX). I've worked in PHP, HTML, CSS. I have               <a href="http://www.uspto.gov/web/patents/patog/week37/OG/html/1418-3/US09137415-20150915.html">
+a patent for a digital image security system</a> I designed. My current work has mainly been in JavaScript, Ruby and Java.</p>
+            </div>
           </paper-card>
 
             <h4>Contact info</h4>
@@ -448,7 +451,7 @@
            © 2016 Stefano De Vuono
         </footer>
       </iron-pages>
-      
+
     </template>
 
     <!-- build:js scripts/app.js -->
