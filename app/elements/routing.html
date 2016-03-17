@@ -54,6 +54,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'blog';
     });
 
+    page('/cdn-cgi/l/email-protection*', function(context, next) {
+      console.log(context);
+      next();
+    });
+
     // 404
     page('*', function() {
       console.log('404', window.location.href);
