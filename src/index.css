@@ -7,3 +7,15 @@ body {
 .page {
   padding: 16px;
 }
+
+.padding-48 {
+  padding: 48px;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.width-240px {
+  width: 240px;
+}

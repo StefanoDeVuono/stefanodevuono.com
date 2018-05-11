@@ -10,7 +10,7 @@ class Header extends Component {
 
     const { location } = props,
           routes = { '/bio': 0, '/skills': 1, '/blog': 2 },
-          value = routes[location.pathname];
+          value = routes[location.pathname] || 0;
 
     this.state = { value };
 
