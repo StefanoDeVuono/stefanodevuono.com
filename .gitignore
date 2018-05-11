@@ -1,7 +1,3 @@
 node_modules
-dist
-tumblr
-bower_components
-.tmp
-.publish/
+build
 .DS_Store
