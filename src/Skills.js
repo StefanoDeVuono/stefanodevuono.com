@@ -3,14 +3,16 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Paper from 'material-ui/Paper';
-
 import { LinearProgress } from 'material-ui/Progress';
 
+import {
+  Nodejs, LanguageJavascript as Javascript, React as Reactjs, Git, Docker,
+  Dns, AccountOutline as UserExperience, CellphoneLink as UserInterface
+} from 'mdi-material-ui';
 
-import { Nodejs, LanguageJavascript as Javascript, React as Reactjs, Git, Docker, Dns, AccountOutline as UserExperience, CellphoneLink as UserInterface } from 'mdi-material-ui';
-
-import { Mithril, Postgres, HtmlCss, Mongo, Inkscape, Sketch, Rails, Linux } from './icons/icons';
-
+import {
+  Mithril, Postgres, HtmlCss, Mongo, Inkscape, Sketch, Rails, Linux
+} from './Icons';
 
 const Skill = (props) => (
   <ListItem>

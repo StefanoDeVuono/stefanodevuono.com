@@ -5,9 +5,6 @@ import Card, { CardContent } from 'material-ui/Card';
 
 import { GithubCircle, TwitterCircle, Linkedin } from 'mdi-material-ui';
 
-
-
-
 export default () => (
   <div className="page">
     <Card elevation={0} >
