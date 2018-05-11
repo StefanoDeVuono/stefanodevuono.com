@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from 'material-ui/Avatar';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Card, { CardContent } from 'material-ui/Card';
 
 import { GithubCircle, TwitterCircle, Linkedin } from 'mdi-material-ui';
 

@@ -1,16 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 
 import { LinearProgress } from 'material-ui/Progress';
 
 
-import { Nodejs, LanguageJavascript as Javascript, React as Reactjs, Git, Linux, Docker, Dns, AccountOutline as UserExperience, CellphoneLink as UserInterface } from 'mdi-material-ui';
+import { Nodejs, LanguageJavascript as Javascript, React as Reactjs, Git, Docker, Dns, AccountOutline as UserExperience, CellphoneLink as UserInterface } from 'mdi-material-ui';
 
-import { Mithril, Postgres, HtmlCss, Mongo, Inkscape, Sketch, Rails } from './icons/icons';
+import { Mithril, Postgres, HtmlCss, Mongo, Inkscape, Sketch, Rails, Linux } from './icons/icons';
 
 
 const Skill = (props) => (
@@ -104,27 +103,18 @@ const Design = () => (
   </Grid>
 )
 
-export default class Skills extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
-  render(){
-    return (
-      <Grid container>
-        <Grid item xs={12}>
-          <Grid container justify="center"  alignItems="center" spacing={16}>
-            <FrontEnd />
-            <BackEnd />
-            <Databases />
-          </Grid>
-          <Grid container justify="center"  alignItems="center" spacing={16}>
-            <SystemsOps />
-            <Design />
-          </Grid>
-        </Grid>
+export default () => (
+  <Grid container>
+    <Grid item xs={12}>
+      <Grid container justify="center"  alignItems="center" spacing={16}>
+        <FrontEnd />
+        <BackEnd />
+        <Databases />
       </Grid>
-    )
-  }
-}
+      <Grid container justify="center"  alignItems="center" spacing={16}>
+        <SystemsOps />
+        <Design />
+      </Grid>
+    </Grid>
+  </Grid>
+)
